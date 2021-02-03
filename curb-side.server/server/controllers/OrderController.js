@@ -6,9 +6,9 @@ export class OrderController extends BaseController {
   constructor() {
     super('api/orders')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getOne)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -16,7 +16,8 @@ export class OrderController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await orderService.getAll(req)
+      req.query.creatorId = req.userInfo.id
+      const data = await orderService.getAll(req.query)
       res.send(data)
     } catch (error) {
       next(error)
