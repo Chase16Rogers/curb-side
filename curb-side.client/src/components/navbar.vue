@@ -1,78 +1,42 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        />
-      </div>
-    </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
-          </router-link>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark row">
+    <div class="button-div row d-none">
+      <!-- <button class="btn btn-light">
+        Login
+      </button> -->
+    </div>
+    <div class="hex-home mx-5">
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+        <div class="hexagon align-items-center row">
+          <h1 class="big-c col text-center ">
+            C
+          </h1>
+        </div>
+      </router-link>
+    </div>
+
+    <div class="navbar  button-div row w-100" id="navbarText">
+      <router-link :to="{ name: 'Home' }" class="home-link">
+        Home
+      </router-link>
+
       <span class="navbar-text">
         <button
-          class="btn btn-outline-primary text-uppercase"
+          class="btn btn-outline-light text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
         >
           Login
         </button>
-
-        <div class="dropdown" v-else>
-          <div
-            class="dropdown-toggle"
-            @click="state.dropOpen = !state.dropOpen"
-          >
-            <img
-              :src="user.picture"
-              alt="user photo"
-              height="40"
-              class="rounded"
-            />
-            <span class="mx-3">{{ user.name }}</span>
-          </div>
-          <div
-            class="dropdown-menu p-0 list-group w-100"
-            :class="{ show: state.dropOpen }"
-            @click="state.dropOpen = false"
-          >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Account
-              </div>
-            </router-link>
-            <div
-              class="list-group-item list-group-item-action hoverable"
-              @click="logout"
-            >
-              logout
-            </div>
-          </div>
-        </div>
+        <router-link v-else :to="{ name: 'Account' }">
+          <img
+            :src="user.picture"
+            alt="user photo"
+            height="40"
+            class="rounded"
+          />
+        </router-link>
+        <span class="mx-3">{{ user.name }}</span>
       </span>
     </div>
   </nav>
@@ -102,16 +66,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.dropdown-menu {
-  user-select: none;
-  display: block;
-  transform: scale(0);
-  transition: all 0.15s linear;
-}
-.dropdown-menu.show {
-  transform: scale(1);
-}
+<style scoped lang='scss'>
+@import '../assets/scss/_variables.scss';
 .hoverable {
   cursor: pointer;
 }
@@ -121,7 +77,44 @@ a:hover {
 .nav-link{
   text-transform: uppercase;
 }
+@media only screen and (max-width: 600px){
+  .home-link{
+  display: none;
+  }
+  .hex-home{
+    justify-self: center !important;
+    display: flex ;
+    margin: auto !important;
+  }
+  .button-div{
+    width: 38% !important;
+    min-height: 10px;
+    display: block !important;
+    justify-content: center;
+  }
+  .navbar-brand{
+    margin-right: 0px !important;
+  }
+  .navbar{
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+}
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.hexagon {
+  background-image: url("../assets/img/hexagon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 3;
+  height: 80px;
+  width: 80px;
+}
+.big-c{
+  font-size: 3rem;
+  font-weight: 400;
 }
 </style>
