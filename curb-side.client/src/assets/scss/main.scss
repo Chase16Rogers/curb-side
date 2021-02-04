@@ -21,3 +21,13 @@ main {
   display: flex;
   align-items: stretch;
 }
+
+input.border-0{
+  background-color: rgba(231, 230, 229, 0);
+  border-bottom: 1px solid black !important;
+  border-radius: 0;
+}
+.lines{
+  /* border-top: 1px solid grey; */
+  border-bottom: 1px solid grey;
+}
