@@ -1,16 +1,18 @@
-
-  {
-    "name": "curb-side",
-    "version": "1.0.0",
-    "scripts": {
-      "build": "npm run setup:client && npm run setup:server && npm run build:client",
-      "setup:client": "cd curb-side.client && npm i",
-      "setup:server": "cd curb-side.server && npm i",
-      "build:client": "npm run --prefix curb-side.client build",
-      "start": "node curb-side.server/index.js"
-    },
-    "engines": {
-      "node": "^14.15.4"
-    }
+{
+  "name": "curb-side",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run setup:client && npm run setup:server && npm run build:client",
+    "setup:client": "cd curb-side.client && npm i",
+    "setup:server": "cd curb-side.server && npm i",
+    "build:client": "npm run --prefix curb-side.client build",
+    "start": "node curb-side.server/index.js"
+  },
+  "engines": {
+    "node": "^14.15.4"
+  },
+  "dependencies": {
+    "client": "0.0.1",
+    "serve": "^11.3.2"
   }
-  
+}
