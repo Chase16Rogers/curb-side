@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { orderService } from '../services/OrderService'
+import { businessService } from '../services/BusinessService'
 
 export class OrderController extends BaseController {
   constructor() {
@@ -16,7 +17,7 @@ export class OrderController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      req.query.creatorId = req.userInfo.id
+      req.body.creatorId = req.userInfo.id
       const data = await orderService.getAll(req.query)
       res.send(data)
     } catch (error) {
@@ -36,8 +37,7 @@ export class OrderController extends BaseController {
   async create(req, res, next) {
     try {
       const val = req.body
-      val.creatorId = req.userInfo.id
-      val.customerId = req.userInfo.id
+      val.customerId = req.params.id
       const data = await orderService.create(val)
       res.send(data)
     } catch (error) {

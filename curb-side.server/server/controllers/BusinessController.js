@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { businessService } from '../services/BusinessService'
+import { orderService } from '../services/OrderService'
 
 export class BusinessController extends BaseController {
   constructor() {
@@ -9,6 +10,7 @@ export class BusinessController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getOne)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:id/orders', this.getOrders)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -26,6 +28,16 @@ export class BusinessController extends BaseController {
   async getOne(req, res, next) {
     try {
       const data = await businessService.getOne(req.params.id)
+      res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getOrders(req, res, next) {
+    try {
+      const businessId = req.params.id
+      const data = await orderService.getOrders(businessId)
       res.send(data)
     } catch (error) {
       next(error)
