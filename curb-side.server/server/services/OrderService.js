@@ -1,23 +1,13 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
-import { businessService } from './BusinessService'
 
 class OrderService {
-  async getAll(req) {
-    let bTruth = false
-    if (req.body.businessId) {
-      const business = await businessService.getOne(req.body.businessId)
-      if (business.creatorId === req.userInfo.id) {
-        bTruth = true
-      }
+  async getMyOrders(query) {
+    const res = await dbContext.Orders.find(query)
+    if (!res) {
+      throw new BadRequest('ERROR 403 THE ID DOES NOT HAVE ANY ORDERS')
     }
-    if (bTruth || req.body.creatorId === req.userInfo.id) {
-      const res = await dbContext.Orders.find(req.body)
-      if (!res) {
-        throw new BadRequest('Invalid Search')
-      }
-      return res
-    }
+    return res
   }
 
   async getOrders(userId) {
