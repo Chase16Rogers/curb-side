@@ -20,6 +20,11 @@ class OrderService {
     }
   }
 
+  async getOrders(userId) {
+    const res = await dbContext.Orders.find({ id: userId })
+    return res
+  }
+
   async getOne(id) {
     const res = await dbContext.Orders.findById(id)
     if (!res) {

@@ -1,14 +1,15 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { orderService } from '../services/OrderService'
+import { businessService } from '../services/BusinessService'
 
 export class OrderController extends BaseController {
   constructor() {
     super('api/orders')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getOne)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -16,7 +17,8 @@ export class OrderController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await orderService.getAll(req)
+      req.body.creatorId = req.userInfo.id
+      const data = await orderService.getAll(req.query)
       res.send(data)
     } catch (error) {
       next(error)
@@ -35,8 +37,7 @@ export class OrderController extends BaseController {
   async create(req, res, next) {
     try {
       const val = req.body
-      val.creatorId = req.userInfo.id
-      val.customerId = req.userInfo.id
+      val.customerId = req.params.id
       const data = await orderService.create(val)
       res.send(data)
     } catch (error) {

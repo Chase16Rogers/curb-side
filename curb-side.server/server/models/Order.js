@@ -14,7 +14,7 @@ const Order = new Schema(
     creatorId: { type: String, required: true },
     customerId: { type: String, required: true },
     status: { type: String, required: true, enum: ['pending', 'cancelledByCustomer', 'cancelledByBusiness', 'completed'], default: 'pending' },
-    subTotal: { type: Number, required: true },
+    subTotal: { type: Number, required: true, default: 0 },
     contents: [contentSchema]
   },
   { timestamps: true, toJSON: { virtuals: true } }
