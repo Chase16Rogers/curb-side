@@ -30,6 +30,12 @@ input.border-0{
 .lines{
   border-bottom: 1px solid grey;
 }
+
+.dark-lines{
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.pointer:hover{
+  cursor: pointer;
 .hexagon {
   background-image: url("./assets/img/hexagon.png");
   background-position: center;
