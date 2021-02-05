@@ -28,6 +28,100 @@ input.border-0{
   border-radius: 0;
 }
 .lines{
-  /* border-top: 1px solid grey; */
   border-bottom: 1px solid grey;
+}
+
+.dark-lines{
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.pointer:hover{
+  cursor: pointer;
+.hexagon {
+  background-image: url("./assets/img/hexagon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 3;
+  height: 80px;
+  width: 80px;
+}
+.big-c {
+  font-size: 3rem;
+  font-weight: 400;
+}
+.elevation-1 {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+.elevation-2 {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.elevation-3 {
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
+.elevation-4 {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.elevation-5 {
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 6px 0 rgba(0, 0, 0, 0.14), 0 1px 12px 0 rgba(0, 0, 0, 0.12);
+}
+.border-2 {
+  border-width: 0.25rem !important;
+}
+.border-3 {
+  border-width: 0.33rem !important;
+}
+.border-4 {
+  border-width: 0.5rem !important;
+}
+.border-5 {
+  border-width: 0.75rem !important;
+}
+.f-8 {
+  font-size: 8pt !important;
+}
+.f-10 {
+  font-size: 10pt !important;
+}
+.f-12 {
+  font-size: 12pt !important;
+}
+.f-14 {
+  font-size: 14pt !important;
+}
+.f-16 {
+  font-size: 16pt !important;
+}
+.f-18 {
+  font-size: 18pt !important;
+}
+.f-20 {
+  font-size: 20pt !important;
+}
+.square {
+  border-radius: 0 !important;
+}
+.square-left {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.square-right {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.square-top {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.square-bottom {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}.clip-text {
+  
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  max-width: 95%;
+}
+.no-select {
+  user-select: none;
 }

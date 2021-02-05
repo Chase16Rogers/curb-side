@@ -33,6 +33,12 @@ const routes = [
     name: 'MyBusiness',
     component: loadPage('MyBusinessPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/manageMyBusinesses/:id',
+    name: 'BusinessManager',
+    component: loadPage('BusinessManager'),
+    beforeEnter: authGuard
   }
 ]
 

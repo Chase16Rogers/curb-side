@@ -1,6 +1,9 @@
 {
   "folders": [
     {
+      "path": "curb-side.server"
+    },
+    {
       "path": "curb-side.client"
     }
   ],
@@ -33,21 +36,24 @@
       "source.fixAll": true
     },
     "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#6fcbc6",
-      "activityBar.activeBorder": "#be5bc4",
-      "activityBar.background": "#6fcbc6",
+      "activityBar.activeBackground": "#ff8c8c",
+      "activityBar.activeBorder": "#dfffdf",
+      "activityBar.background": "#ff8c8c",
       "activityBar.foreground": "#15202b",
       "activityBar.inactiveForeground": "#15202b99",
-      "activityBarBadge.background": "#be5bc4",
+      "activityBarBadge.background": "#dfffdf",
       "activityBarBadge.foreground": "#15202b",
-      "statusBar.background": "#49beb7",
+      "editorGroup.border": "#ff8c8c",
+      "panel.border": "#ff8c8c",
+      "sideBar.border": "#ff8c8c",
+      "statusBar.background": "#ff5959",
       "statusBar.foreground": "#15202b",
-      "statusBarItem.hoverBackground": "#389c96",
-      "titleBar.activeBackground": "#49beb7",
+      "statusBarItem.hoverBackground": "#ff2626",
+      "titleBar.activeBackground": "#ff5959",
       "titleBar.activeForeground": "#15202b",
-      "titleBar.inactiveBackground": "#49beb799",
+      "titleBar.inactiveBackground": "#ff595999",
       "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#49beb7"
+    "peacock.color": "#ff5959"
   }
 }
