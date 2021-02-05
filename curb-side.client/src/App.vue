@@ -30,10 +30,10 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 @import "./assets/scss/_variables.scss";
-@import 'bootstrap';
+@import "bootstrap";
 @media only screen and (max-width: 600px) {
   #app {
-    flex-direction: column-reverse;;
+    flex-direction: column-reverse;
   }
   footer {
     display: none;
