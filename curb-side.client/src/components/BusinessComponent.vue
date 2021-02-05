@@ -1,5 +1,5 @@
 <template>
-  <div class="row lines">
+  <div class="row lines" @click="businessManager()">
     <div class="col-4 p-0">
       <img class="img-fluid" :src="buizProp.logo">
     </div>
@@ -15,12 +15,26 @@
 </template>
 
 <script>
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
 export default {
   name: 'BusinessComponent',
   props: {
     buizProp: {
       type: Object,
       required: true
+    }
+  },
+  setup(props) {
+    const router = useRouter()
+    const state = reactive({
+
+    })
+    return {
+      state,
+      businessManager() {
+        router.push({ name: 'BusinessManager', params: { id: props.buizProp.id } })
+      }
     }
   }
 }
