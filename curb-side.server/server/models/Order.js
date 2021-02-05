@@ -5,7 +5,8 @@ const contentSchema = new Schema(
     productId: { type: String, required: true },
     quantity: { type: Number, required: true },
     metaData: { type: Object }
-  }
+  },
+  { timestamps: true, toJSON: { virtuals: true } }
 )
 
 const Order = new Schema(
@@ -26,5 +27,10 @@ Order.virtual('creator', {
   foreignField: '_id',
   justOne: true
 })
-
+contentSchema.virtual('product', {
+  localField: 'productId',
+  ref: 'Product',
+  foreignField: '_id',
+  justOne: false
+})
 export default Order

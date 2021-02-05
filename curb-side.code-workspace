@@ -1,10 +1,12 @@
 {
   "folders": [
     {
-      "path": "curb-side.server"
+      "name": "curb-side.client",
+      "path": "curb-side.client"
     },
     {
-      "path": "curb-side.client"
+      "name": "curb-side.server",
+      "path": "curb-side.server"
     }
   ],
   "settings": {

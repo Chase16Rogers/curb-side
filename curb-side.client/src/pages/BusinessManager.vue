@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row mb-3 px-3">
-      <div class="col dark-lines">
+      <div class="col dark-lines" @click="getOrders">
         <h4>Active Orders</h4>
       </div>
     </div>
@@ -35,15 +35,15 @@
 
 <script>
 import { computed, onMounted, reactive } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { businessService } from '../services/BusinessService'
 import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
-// import { useRouter } from 'vue-router'
+
 export default {
   name: 'BusinessManager',
   setup() {
-    // const router = useRouter()
+    const router = useRouter()
     const route = useRoute()
     const state = reactive({
       business: computed(() => AppState.activeBusiness)
@@ -56,7 +56,10 @@ export default {
       }
     })
     return {
-      state
+      state,
+      getOrders() {
+        router.push({ name: 'ActiveOrders', params: { id: route.params.id } })
+      }
 
     }
   }

@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="overflow hide-scroll">
     <router-view v-slot="{Component}">
       <transition name="route" mode="out-in">
         <component :is="Component" />

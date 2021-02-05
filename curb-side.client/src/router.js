@@ -39,6 +39,12 @@ const routes = [
     name: 'BusinessManager',
     component: loadPage('BusinessManager'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/activeOrders/:id',
+    name: 'ActiveOrders',
+    component: loadPage('ActiveOrderPage'),
+    beforeEnter: authGuard
   }
 ]
 

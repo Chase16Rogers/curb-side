@@ -36,6 +36,7 @@ input.border-0{
 }
 .pointer:hover{
   cursor: pointer;
+}
 .hexagon {
   background-image: url("./assets/img/hexagon.png");
   background-position: center;
@@ -116,7 +117,6 @@ input.border-0{
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }.clip-text {
-  
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -124,4 +124,11 @@ input.border-0{
 }
 .no-select {
   user-select: none;
+}
+.overflow {
+  height: 35em;
+  overflow-y: scroll;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
 }
