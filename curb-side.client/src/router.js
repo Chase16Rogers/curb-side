@@ -33,6 +33,11 @@ const routes = [
     name: 'MyBusiness',
     component: loadPage('MyBusinessPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/searchresults/:id',
+    name: 'SearchResults',
+    component: loadPage('SearchResultsPage')
   }
 ]
 
