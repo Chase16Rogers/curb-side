@@ -21,6 +21,18 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/business',
+    name: 'CreateBusiness',
+    component: loadPage('BusinessPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/myBusiness',
+    name: 'MyBusiness',
+    component: loadPage('MyBusinessPage'),
+    beforeEnter: authGuard
   }
 ]
 

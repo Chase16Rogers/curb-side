@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 const contentSchema = new Schema(
   {
     productId: { type: String, required: true },
-    quantity: { type: String, required: true },
-    metaData: { type: Object, required: true }
+    quantity: { type: Number, required: true },
+    metaData: { type: Object }
   }
 )
 

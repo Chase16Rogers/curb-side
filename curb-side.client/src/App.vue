@@ -10,15 +10,14 @@
     </router-view>
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
-    </div>
+    <Footer />
   </footer>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+
 export default {
   name: 'App',
   setup() {
@@ -30,5 +29,14 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+@import "./assets/scss/_variables.scss";
+@import 'bootstrap';
+@media only screen and (max-width: 600px) {
+  #app {
+    flex-direction: column-reverse;;
+  }
+  footer {
+    display: none;
+  }
+}
 </style>

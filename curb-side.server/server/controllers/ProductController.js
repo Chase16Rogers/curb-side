@@ -6,22 +6,11 @@ export class ProductController extends BaseController {
   constructor() {
     super('api/products')
     this.router
-      .get('/:id', this.getAll)
       .get('/:id', this.getOne)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
-  }
-
-  async getAll(req, res, next) {
-    try {
-      const query = { businessId: req.params.id }
-      const data = await productService.getAll(query)
-      res.send(data)
-    } catch (error) {
-      next(error)
-    }
   }
 
   async getOne(req, res, next) {

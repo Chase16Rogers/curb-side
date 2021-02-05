@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const Business = new Schema(
   {
     creatorId: { type: String, required: true },
-    logo: { type: String },
+    logo: { type: String, default: 'https://thiscatdoesnotexist.com' },
     name: { type: String, required: true },
     tags: { type: Array },
     location: { type: String, required: true }
