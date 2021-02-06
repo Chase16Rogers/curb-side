@@ -3,7 +3,7 @@ import { BadRequest } from '../utils/Errors'
 
 class OrderService {
   async getMyOrders(query) {
-    const res = await dbContext.Orders.find(query).populate('creator product')
+    const res = await dbContext.Orders.find(query).populate('contents.productId')
     if (!res) {
       throw new BadRequest('ERROR 403 THE ID DOES NOT HAVE ANY ORDERS')
     }
@@ -11,7 +11,7 @@ class OrderService {
   }
 
   async getOrders(userId) {
-    const res = await dbContext.Orders.find({ id: userId }).populate('creator product')
+    const res = await dbContext.Orders.find({ businessId: userId }).populate('contents.product')
     return res
   }
 

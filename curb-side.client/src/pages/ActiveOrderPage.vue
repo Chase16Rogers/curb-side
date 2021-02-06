@@ -5,9 +5,8 @@
         <h3>Active Orders</h3>
       </div>
     </div>
-    <div class="row">
-      <order-component v-for="order in state.orders" :key="order.id" :order-prop="order" />
-    </div>
+
+    <order-component v-for="order in state.orders" :key="order.id" :order-prop="order" />
   </div>
 </template>
 
@@ -21,7 +20,7 @@ import { AppState } from '../AppState'
 export default {
   name: 'ActiveOrder',
   setup() {
-    const route = useRoute
+    const route = useRoute()
     const state = reactive({
       orders: computed(() => AppState.orders)
     })

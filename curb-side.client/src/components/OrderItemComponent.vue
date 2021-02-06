@@ -1,9 +1,26 @@
 <template>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-9 d-flex">
+        <p class="mr-1">
+          {{ itemProp.quantity }}x
+        </p>
+        <p class="">
+          {{ itemProp.product.name }}
+        </p>
+      </div>
+      <div class="col-3">
+        <p class="">
+          ${{ itemProp.product.price }}
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue'
-import { logger } from '../utils/Logger'
+import { reactive } from 'vue'
+// import { logger } from '../utils/Logger'
 export default {
   name: 'OrderItemComponent',
   props: {
@@ -12,16 +29,9 @@ export default {
       required: true
     }
   },
-  setup(props) {
+  setup() {
     const state = reactive({
       items: {}
-    })
-    onMounted(async() => {
-      try {
-        const item = await productsService.getItems(props.productId)
-      } catch (error) {
-        logger.error(error)
-      }
     })
     return {
       state
@@ -31,5 +41,8 @@ export default {
 </script>
 
 <style>
-
+p{
+  margin: 0;
+  font-size: .8em;
+}
 </style>

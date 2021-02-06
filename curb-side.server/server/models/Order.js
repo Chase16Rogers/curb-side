@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
+const ObjectId = mongoose.Schema.Types.ObjectId
 const contentSchema = new Schema(
   {
-    productId: { type: String, required: true },
+    productId: { type: ObjectId, ref: 'Product', required: true },
     quantity: { type: Number, required: true },
     metaData: { type: Object }
   },
@@ -31,6 +32,6 @@ contentSchema.virtual('product', {
   localField: 'productId',
   ref: 'Product',
   foreignField: '_id',
-  justOne: false
+  justOne: true
 })
 export default Order
