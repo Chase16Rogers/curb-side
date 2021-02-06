@@ -49,7 +49,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       myBusiness() {
-        router.push({ name: 'MyBusiness' })
+        router.push({ name: 'MyBusinesses' })
       },
       createBusiness() {
         router.push({ name: 'CreateBusiness' })

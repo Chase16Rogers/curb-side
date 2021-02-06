@@ -5,7 +5,12 @@
         <h3>My Businesses</h3>
       </div>
     </div>
-    <business-component v-for="buiz in state.buiz" :key="buiz.id" :buiz-prop="buiz" />
+    <business-component
+      v-for="buiz in state.buiz"
+      :key="buiz.id"
+      :link="'BusinessManager'"
+      :buiz-prop="buiz"
+    />
   </div>
 </template>
 
@@ -21,7 +26,7 @@ export default {
     const state = reactive({
       buiz: computed(() => AppState.myBusinesses)
     })
-    onMounted(async() => {
+    onMounted(async () => {
       try {
         await businessService.getMyBusiness()
       } catch (error) {
@@ -37,5 +42,4 @@ export default {
 </script>
 
 <style>
-
 </style>
