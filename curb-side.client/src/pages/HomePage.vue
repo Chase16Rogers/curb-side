@@ -56,7 +56,7 @@ export default {
     return {
       state,
       search() {
-        router.push({ name: 'SearchResults', params: { id: state.query } })
+        router.push({ name: 'SearchResults', params: { query: state.query } })
       }
     }
   }

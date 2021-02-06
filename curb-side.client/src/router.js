@@ -29,13 +29,13 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/myBusiness',
-    name: 'MyBusiness',
-    component: loadPage('MyBusinessPage'),
+    path: '/myBusinesses',
+    name: 'MyBusinesses',
+    component: loadPage('MyBusinessesPage'),
     beforeEnter: authGuard
   },
   {
-    path: '/searchresults/:id',
+    path: '/searchresults/:query',
     name: 'SearchResults',
     component: loadPage('SearchResultsPage')
   },
