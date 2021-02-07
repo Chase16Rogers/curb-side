@@ -2,8 +2,8 @@
   <header>
     <Navbar />
   </header>
-  <main class="overflow hide-scroll">
-    <router-view v-slot="{Component}">
+  <main class="overflow d-flex">
+    <router-view v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
@@ -34,6 +34,9 @@ export default {
 @media only screen and (max-width: 600px) {
   #app {
     flex-direction: column-reverse;
+  }
+  main::-webkit-scrollbar {
+    display: none !important;
   }
   footer {
     display: none;

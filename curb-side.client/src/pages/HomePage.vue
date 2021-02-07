@@ -1,16 +1,18 @@
 <template>
   <div class="home container-fluid">
-    <div class="row mobile-header justify-content-start mt-3 d-none">
-      <div class="hexagon align-items-center row ml-3">
+    <div class="row mobile-header h-25 justify-content-start">
+      <div class="hexagon align-items-center row ml-3 d-none">
         <h1 class="big-c col text-center text-white">C</h1>
       </div>
-      <div class="col-8 d-flex align-items-center justify-content-center">
+      <div
+        class="col-8 title-div align-items-center justify-content-center d-none"
+      >
         <h1 class="title-text text-muted">Curb-Side</h1>
       </div>
     </div>
     <form
       id="search-form"
-      class="row search-row align-items-center justify-content-center"
+      class="row search-row h-25 align-items-end justify-content-center"
     >
       <div class="col-8">
         <div class="row justify-content-center">
@@ -22,7 +24,7 @@
               type="text"
             />
           </div>
-          <div class="col-sm-6 col-md-3 mt-3">
+          <div class="col-sm-6 col-md-3 offset-sm-3 offset-md-0 mt-3">
             <button
               @click="search"
               class="btn btn-primary px-4 shop-button elevation-4"
@@ -34,8 +36,8 @@
       </div>
     </form>
 
-    <div class="row bottom-row">
-      <div class="col-xs-4 col-md-3 offset-xs-3 offset-md-9">
+    <div class="row h-50 bottom-row align-items-end justify-content-center">
+      <div class="col-xs-4 mb-3 col-md-3 offset-xs-3 offset-md-9">
         <button class="btn btn-outline-dark elevation-3 register-btn">
           Register your business with us!
         </button>
@@ -66,14 +68,17 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/_variables.scss";
 .home {
-  flex: 1;
-  display: flex;
+  flex: 3;
+  // display: flex;
   align-items: stretch;
-  flex-flow: column;
+  // flex-flow: column;
   overflow: auto;
+  position: relative;
+  align-content: space-between;
 }
 .bottom-row {
-  margin-top: 250px;
+  // align-self: flex-end;
+  justify-self: flex-end;
 }
 .hexagon {
   height: 100px;
@@ -88,8 +93,12 @@ export default {
     display: flex !important;
     flex-wrap: nowrap;
   }
-  .bottom-row {
-    margin-top: 180px;
+  .hexagon {
+    display: flex !important;
+  }
+  .title-div {
+    display: flex !important;
+    height: 100px;
   }
 }
 input {
@@ -103,7 +112,7 @@ input:focus {
 }
 form {
   width: 100%;
-  margin-top: 180px;
+  // margin-top: 180px;
 }
 .register-btn {
   font-weight: 600;

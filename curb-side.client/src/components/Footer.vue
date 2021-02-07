@@ -1,8 +1,6 @@
 <template>
   <div class="footer">
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
-    </div>
+    <div class="bg-dark text-light text-center p-4">Made with 💖</div>
   </div>
 </template>
 
@@ -17,5 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.footer {
+  height: 10% !important;
+}
 </style>
