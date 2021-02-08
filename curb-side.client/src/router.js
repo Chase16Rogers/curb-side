@@ -55,6 +55,12 @@ const routes = [
     path: '/storefront/:id',
     name: 'StoreFront',
     component: loadPage('StoreFront')
+  },
+  {
+    path: '/archivedOrder/:id',
+    name: 'ArchivedOrderPage',
+    component: loadPage('ArchivedOrderPage'),
+    beforeEnter: authGuard
   }
 ]
 
