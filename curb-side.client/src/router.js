@@ -61,6 +61,11 @@ const routes = [
     name: 'ArchivedOrderPage',
     component: loadPage('ArchivedOrderPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/productpage/:id',
+    name: 'ProductPage',
+    component: loadPage('ProductPage')
   }
 ]
 
