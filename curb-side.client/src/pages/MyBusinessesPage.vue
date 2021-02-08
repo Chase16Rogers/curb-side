@@ -1,16 +1,20 @@
 <template>
   <div class="container-fluid">
-    <div class="row lines">
-      <div class="col-sm mb-4">
+    <div class="row justify-content-center">
+      <div class="col-xs-10 lines col-md-8">
         <h3>My Businesses</h3>
       </div>
     </div>
-    <business-component
-      v-for="buiz in state.buiz"
-      :key="buiz.id"
-      :link="'BusinessManager'"
-      :buiz-prop="buiz"
-    />
+    <div class="row justify-content-center">
+      <div class="col-xs-10 col-md-8">
+        <business-component
+          v-for="buiz in state.buiz"
+          :key="buiz.id"
+          :link="'BusinessManager'"
+          :buiz-prop="buiz"
+        />
+      </div>
+    </div>
   </div>
 </template>
 

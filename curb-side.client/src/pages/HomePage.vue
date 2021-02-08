@@ -2,12 +2,16 @@
   <div class="home container-fluid">
     <div class="row mobile-header h-25 justify-content-start">
       <div class="hexagon align-items-center row ml-3 d-none">
-        <h1 class="big-c col text-center text-white">C</h1>
+        <h1 class="big-c col text-center text-white">
+          C
+        </h1>
       </div>
       <div
         class="col-8 title-div align-items-center justify-content-center d-none"
       >
-        <h1 class="title-text text-muted">Curb-Side</h1>
+        <h1 class="title-text text-muted">
+          Curb-Side
+        </h1>
       </div>
     </div>
     <form
@@ -18,7 +22,7 @@
         <div class="row justify-content-center">
           <div class="mt-3 col-xs-10 col-md-6">
             <input
-              v-model="state.query"
+              v-model="state.search"
               class="elevation-4"
               placeholder="Enter Address"
               type="text"
@@ -26,6 +30,7 @@
           </div>
           <div class="col-sm-6 col-md-3 offset-sm-3 offset-md-0 mt-3">
             <button
+              type="button"
               @click="search"
               class="btn btn-primary px-4 shop-button elevation-4"
             >
@@ -52,13 +57,13 @@ export default {
   name: 'Home',
 
   setup() {
-    const state = { query: '' }
+    const state = { search: '' }
     const router = useRouter()
 
     return {
       state,
       search() {
-        router.push({ name: 'SearchResults', params: { query: state.query } })
+        router.push({ name: 'SearchResults', params: { search: state.search } })
       }
     }
   }

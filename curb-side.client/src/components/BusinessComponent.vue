@@ -1,12 +1,12 @@
 <template>
   <div
-    class="row py-3 pl-3 lines justify-content-between"
+    class="row py-3 pl-3 lines justify-content-between pointer"
     @click="businessManager()"
   >
-    <div class="col-4 p-0">
+    <div class="col-2 p-0">
       <img class="img-fluid" :src="buizProp.logo" />
     </div>
-    <div class="col-7">
+    <div class="col-9">
       <div class="row">
         <p class="p-2 m-0 names">
           {{ buizProp.name }}
@@ -17,7 +17,6 @@
           v-for="tag in buizProp.tags"
           :key="tag"
           :tag="tag"
-          class="px-2 m-0"
         />
       </div>
     </div>
