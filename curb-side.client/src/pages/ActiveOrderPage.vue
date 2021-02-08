@@ -16,6 +16,7 @@ import { logger } from '../utils/Logger'
 import { orderService } from '../services/OrderService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
+import { businessService } from '../services/BusinessService'
 
 export default {
   name: 'ActiveOrder',
@@ -27,6 +28,7 @@ export default {
     onMounted(async() => {
       try {
         await orderService.getOrders(route.params.id)
+        await businessService.getOneBusiness(route.params.id)
       } catch (error) {
         logger.error(error)
       }
