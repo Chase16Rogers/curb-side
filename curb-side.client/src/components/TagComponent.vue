@@ -1,5 +1,5 @@
 <template>
-  <div class="tag mx-2 mt-2">
+  <div class="tag mr-3 mt-2 px-2 m-0">
     <p>{{ tag }}</p>
   </div>
 </template>
@@ -18,15 +18,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/scss/_variables.scss";
-.tag {
-  background: $info;
-  border-radius: 20px;
-  width: fit-content;
-}
-p {
-  margin-bottom: 2px;
-  padding: 5px !important;
-  font-weight: 500;
-}
-</style>
+    @import "../assets/scss/_variables.scss";
+    .tag {
+    background: $info;
+    border-radius: 20px;
+    width: fit-content;
+    }
+    p {
+    margin-bottom: 2px;
+    padding: 5px !important;
+    font-weight: 500;
+    }
+    </style>

@@ -29,33 +29,43 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/myBusinesses',
+    path: '/mybusinesses',
     name: 'MyBusinesses',
     component: loadPage('MyBusinessesPage'),
     beforeEnter: authGuard
   },
   {
-    path: '/searchresults/:query',
+    path: '/searchresults/:search',
     name: 'SearchResults',
     component: loadPage('SearchResultsPage')
   },
   {
-    path: '/manageMyBusinesses/:id',
+    path: '/managemybusinesses/:id',
     name: 'BusinessManager',
     component: loadPage('BusinessManager'),
     beforeEnter: authGuard
   },
   {
-    path: '/activeOrders/:id',
+    path: '/activeorders/:id',
     name: 'ActiveOrders',
     component: loadPage('ActiveOrderPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/storefront/:id',
+    name: 'StoreFront',
+    component: loadPage('StoreFront')
   },
   {
     path: '/archivedOrder/:id',
     name: 'ArchivedOrderPage',
     component: loadPage('ArchivedOrderPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/productpage/:id',
+    name: 'ProductPage',
+    component: loadPage('ProductPage')
   }
 ]
 

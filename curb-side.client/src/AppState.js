@@ -9,5 +9,7 @@ export const AppState = reactive({
   activeBusiness: {},
   orders: [],
   chat: {},
-  date: ''
+  date: '',
+  products: [],
+  activeProduct: {}
 })

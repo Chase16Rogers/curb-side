@@ -1,21 +1,24 @@
 <template>
   <div class="container-fluid">
-    <div class="row lines">
-      <div class="col-sm mb-4">
+    <div class="row justify-content-center">
+      <div class="col-xs-10 lines col-md-8">
         <h3>Search Results</h3>
       </div>
     </div>
-    <business-component
-      v-for="buiz in state.buiz"
-      :key="buiz.id"
-      :link="'BusinessDetails'"
-      :buiz-prop="buiz"
-    />
+    <div class="row justify-content-center">
+      <div class="col-xs-10 col-md-8">
+        <business-component
+          v-for="buiz in state.buiz"
+          :key="buiz.id"
+          :link="'StoreFront'"
+          :buiz-prop="buiz"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// import { useRoute } from 'vue-router'
 import { reactive, computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { searchService } from '../services/SearchService'
@@ -26,8 +29,8 @@ export default {
     })
     // const route = useRoute()
     // const query = route.params.query
-    onMounted(async () => {
-      // NOTE Google data will eventually be here 
+    onMounted(async() => {
+      // NOTE Google data will eventually be here
       try {
         await searchService.getAll()
       } catch (error) {
@@ -38,7 +41,6 @@ export default {
       state
     }
   }
-
 
 }
 </script>
