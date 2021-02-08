@@ -1,25 +1,52 @@
 <template>
+  <div class="row lines mt-3 pb-2" v-if="state.showDate && !state.activeArchive">
+    <div class="col">
+      <p>{{ getDate() }}</p>
+    </div>
+  </div>
   <div class="row lines p-3">
     <div class="col-6 p-0">
       <div class="d-flex">
         <p class="mr-1">
-          Order Recieved:
+          <b>Order Recieved:</b>
         </p>
-        <p>{{ time() }}</p>
+        <p><b>{{ time() }}</b></p>
       </div>
 
       <order-item-component v-for="item in orderProp.contents" :key="item._id" :item-prop="item" />
     </div>
-    <div class="col-6 d-flex justify-content-center flex-column">
+    <div class="col-6 d-flex justify-content-center flex-column pr-0" v-if="state.activeArchive">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-7 d-flex align-items-end">
+            <p class="mr-2">
+              {{ orderProp.creator.name }}
+            </p>
+          </div>
+          <div class="offset-1 col-3">
+            <i class="fa fa-comment fa-2x pointer align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" data-target="#chatModal"></i>
+          </div>
+        </div>
+      </div>
       <p class="green-text" v-if="orderProp.here">
         The customer is waiting!
       </p>
       <p class="red-text" v-else>
         The customer is not here yet!
       </p>
-      <p>Chat with the customer</p>
+
       <!-- trigger modal -->
-      <i class="fa fa-comment fa-2x pointer align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" data-target="#chatModal"></i>
+    </div>
+    <div class="col-6" v-else>
+      <p class="text-primary" v-if="orderProp.status === 'completed'">
+        This order was fulfilled
+      </p>
+      <p class="text-secondary" v-else-if="orderProp.status==='cancelledByBusiness'">
+        This order was cancelled by business
+      </p>
+      <p class="text-secondary" v-else-if="orderProp.status==='cancelledByCustomer'">
+        This order was cancelled by customer
+      </p>
     </div>
   </div>
 
@@ -59,7 +86,7 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { chatService } from '../services/ChatService'
 import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
@@ -69,12 +96,29 @@ export default {
     orderProp: {
       type: Object,
       required: true
+    },
+    archived: {
+      type: Boolean
     }
   },
   setup(props) {
     const state = reactive({
       chat: computed(() => AppState.chat[0] || AppState.chat),
-      message: ''
+      message: '',
+      orderDate: computed(() => AppState.date),
+      showDate: false,
+      activeArchive: true
+    })
+    onMounted(() => {
+      if (props.orderProp.date === state.orderDate) {
+        state.showDate = false
+      } else {
+        state.showDate = true
+      }
+      AppState.date = props.orderProp.date
+      if (props.archived) {
+        state.activeArchive = false
+      }
     })
     return {
       state,
@@ -104,6 +148,52 @@ export default {
         } catch (error) {
           logger.error(error)
         }
+      },
+      getDate() {
+        const date = new Date(props.orderProp.createdAt)
+        let month = date.getMonth()
+        const year = date.getFullYear()
+        const day = date.getDate()
+        month += 1
+        switch (month) {
+          case 1:
+            month = 'January'
+            break
+          case 2:
+            month = 'Febuary'
+            break
+          case 3:
+            month = 'March'
+            break
+          case 4:
+            month = 'April'
+            break
+          case 5:
+            month = 'May'
+            break
+          case 6:
+            month = 'June'
+            break
+          case 7:
+            month = 'July'
+            break
+          case 8:
+            month = 'August'
+            break
+          case 9:
+            month = 'September'
+            break
+          case 10:
+            month = 'October'
+            break
+          case 11:
+            month = 'November'
+            break
+          case 12:
+            month = 'December'
+            break
+        }
+        return month + '-' + day + '-' + year
       }
     }
   }

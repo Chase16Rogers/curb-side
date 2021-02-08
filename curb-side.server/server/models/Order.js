@@ -24,7 +24,7 @@ const Order = new Schema(
 )
 
 Order.virtual('creator', {
-  localField: 'creatorId',
+  localField: 'customerId',
   ref: 'Account',
   foreignField: '_id',
   justOne: true

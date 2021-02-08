@@ -11,7 +11,7 @@ class OrderService {
   }
 
   async getOrders(userId) {
-    const res = await dbContext.Orders.find({ businessId: userId }).populate('contents.product')
+    const res = await dbContext.Orders.find({ businessId: userId }).populate('contents.product creator')
     return res
   }
 

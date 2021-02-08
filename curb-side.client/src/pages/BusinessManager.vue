@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="row mb-3 px-3">
-      <div class="col dark-lines">
+      <div class="col dark-lines" @click="archived">
         <h4>View Archived Orders</h4>
       </div>
     </div>
@@ -59,6 +59,9 @@ export default {
       state,
       getOrders() {
         router.push({ name: 'ActiveOrders', params: { id: route.params.id } })
+      },
+      archived() {
+        router.push({ name: 'ArchivedOrderPage', params: { id: route.params.id } })
       }
 
     }
