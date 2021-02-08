@@ -63,6 +63,9 @@ export default {
 .hoverable {
   cursor: pointer;
 }
+.navbar {
+  flex-wrap: nowrap !important;
+}
 a:hover {
   text-decoration: none;
 }
@@ -89,7 +92,8 @@ a:hover {
   }
   .navbar {
     justify-content: space-between;
-    flex-wrap: nowrap;
+
+    height: 20%;
   }
   .account-name {
     display: none;
