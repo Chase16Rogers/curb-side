@@ -35,8 +35,10 @@ export class OrderController extends BaseController {
   async create(req, res, next) {
     try {
       const val = req.body
+      //REVIEW CreatorID seems unnecessary
       val.customerId = req.userInfo.id
       val.creatorId = req.userInfo.id
+      // NOTE Verify that an order's subtotal is accurate
       const data = await orderService.create(val)
       await chatService.create({ customerId: req.userInfo.id, businessId: req.body.businessId, orderId: data._id })
       res.send(data)
