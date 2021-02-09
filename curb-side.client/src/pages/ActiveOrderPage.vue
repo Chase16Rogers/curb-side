@@ -5,8 +5,15 @@
         <h3>Active Orders</h3>
       </div>
     </div>
+    <div class="row mt-5" v-if="state.spin">
+      <div class="col-12 mt-5 justify-content-center d-flex">
+        <i class="fa fa-circle-o-notch fa-5x fa-spin" aria-hidden="true"></i>
+      </div>
+    </div>
 
-    <order-component v-for="order in state.orders" :key="order.id" :order-prop="order" />
+    <div v-else>
+      <order-component v-for="order in state.orders" :key="order.id" :order-prop="order" />
+    </div>
   </div>
 </template>
 
@@ -23,11 +30,14 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      orders: computed(() => AppState.orders)
+      orders: computed(() => AppState.orders),
+      spin: computed(() => AppState.spin)
     })
     onMounted(async() => {
       try {
         await orderService.getOrders(route.params.id)
+        AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+        AppState.spin = false
         await businessService.getOneBusiness(route.params.id)
       } catch (error) {
         logger.error(error)

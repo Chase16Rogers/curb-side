@@ -11,5 +11,6 @@ export const AppState = reactive({
   chat: {},
   date: '',
   products: [],
-  activeProduct: {}
+  activeProduct: {},
+  spin: true
 })

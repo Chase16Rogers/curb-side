@@ -20,7 +20,7 @@
         <h4>Active Orders</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row mb-3 px-3" @click="routeCatalogue">
       <div class="col dark-lines">
         <h4>View Catalogue</h4>
       </div>
@@ -62,6 +62,9 @@ export default {
       },
       archived() {
         router.push({ name: 'ArchivedOrderPage', params: { id: route.params.id } })
+      },
+      routeCatalogue() {
+        router.push({ name: 'EditStoreFront', params: { id: route.params.id } })
       }
 
     }

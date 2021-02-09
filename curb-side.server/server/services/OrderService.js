@@ -24,19 +24,24 @@ class OrderService {
   }
 
   async create(data) {
+    
     const res = await dbContext.Orders.create(data)
     if (!res) {
       throw new BadRequest('Not Enough Data')
     }
-    return res
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product')
+    return val
+    
   }
 
   async edit(data, query) {
+    
     const res = await dbContext.Orders.findOneAndUpdate(query, data, { new: true })
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
-    return res
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product')
+    return val
   }
 
   async delete(query) {
