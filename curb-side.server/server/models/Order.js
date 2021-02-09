@@ -5,7 +5,7 @@ const contentSchema = new Schema(
   {
     productId: { type: ObjectId, ref: 'Product', required: true },
     quantity: { type: Number, required: true },
-    metaData: { type: Object }
+    instructions: { type: String }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
