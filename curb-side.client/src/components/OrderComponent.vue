@@ -14,8 +14,18 @@
       </div>
 
       <order-item-component v-for="item in orderProp.contents" :key="item._id" :item-prop="item" />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-9">
+            <p>total charge:</p>
+          </div>
+          <div class="col-3">
+            <p>${{ orderProp.subTotal }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-6 d-flex justify-content-center flex-column pr-0" v-if="state.activeArchive">
+    <div class="col-6 d-flex align-items-center flex-column pr-0" v-if="state.activeArchive">
       <div class="container-fluid">
         <div class="row">
           <div class="col-7 d-flex align-items-end">
@@ -24,16 +34,32 @@
             </p>
           </div>
           <div class="offset-1 col-3">
-            <i class="fa fa-comment fa-2x pointer align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" data-target="#chatModal"></i>
+            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" data-target="#chatModal"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="green-text" v-if="orderProp.here">
+              The customer is waiting!
+            </p>
+            <p class="red-text" v-else>
+              The customer is not here yet!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 fs-6">
+            <button class="btn-outline-success btn btn-sm text-sm min-width" data-toggle="modal" :data-target="'#id' + orderProp._id">
+              Order Completed
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="btn-outline-secondary btn btn-sm text-sm min-width" data-toggle="modal" :data-target="'#canid' + orderProp._id">
+              Cancel Order
+            </button>
           </div>
         </div>
       </div>
-      <p class="green-text" v-if="orderProp.here">
-        The customer is waiting!
-      </p>
-      <p class="red-text" v-else>
-        The customer is not here yet!
-      </p>
 
       <!-- trigger modal -->
     </div>
@@ -49,7 +75,8 @@
       </p>
     </div>
   </div>
-
+  <complete-order-modal :complete-prop="orderProp._id" />
+  <cancel-order-modal :cancel-prop="orderProp._id" />
   <!-- Modal -->
   <div class="modal fade bg-light"
        data-backdrop="static"
@@ -93,6 +120,7 @@ import { AppState } from '../AppState'
 export default {
   name: 'OrderComponent',
   props: {
+
     orderProp: {
       type: Object,
       required: true
@@ -131,6 +159,7 @@ export default {
         }
         return hours + ':' + minutes
       },
+
       async getChat() {
         try {
           await chatService.getChats(props.orderProp._id)
@@ -209,5 +238,11 @@ p{
 }
 .red-text{
   color: var(--secondary)
+}
+.text-sm{
+  font-size: .8rem !important;
+}
+.min-width{
+  width: 100%;
 }
 </style>

@@ -12,5 +12,6 @@ export const AppState = reactive({
   date: '',
   products: [],
   activeProduct: {},
-  cart: {}
+  cart: {},
+  spin: true
 })
