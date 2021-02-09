@@ -3,7 +3,9 @@
     <div class="container-fluid d-flex flex-column p-3">
       <div class="row mb-5">
         <div class="col-sm">
-          <h3 class="">Tell us a bit about your business!</h3>
+          <h3 class="">
+            Tell us a bit about your business!
+          </h3>
           <input
             class="form-control border-0 mb-2"
             type="text"
@@ -38,7 +40,9 @@
       </div>
       <div class="row align-self-center my-5">
         <div class="col">
-          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary">
+            Submit
+          </button>
         </div>
       </div>
     </div>
@@ -63,7 +67,7 @@ export default {
       async createBusiness() {
         try {
           await businessService.createBusiness(state.newBusiness)
-          router.push({ name: 'MyBusiness' })
+          router.push({ name: 'MyBusinesses' })
         } catch (error) {
           logger.error(error)
         }

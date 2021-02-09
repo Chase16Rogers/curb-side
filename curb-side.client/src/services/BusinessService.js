@@ -15,8 +15,8 @@ class BusinessService {
 
   async createBusiness(data) {
     console.log(data)
-    debugger
-    data.tags = data.tags.split(' ')
+    if (data.tags) { data.tags = data.tags.split(' ') }
+
     const res = await api.post('api/businesses', data)
     AppState.businesses.push(res.data)
     logger.log(AppState.businesses)
