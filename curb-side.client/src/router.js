@@ -4,7 +4,7 @@ import { authGuard } from '@bcwdev/auth0provider-client'
 function loadPage(page) {
   return () => import(`./pages/${page}.vue`)
 }
-
+// NOTE Inconsistent naming conventions. Calling page in name or no???
 const routes = [
   {
     path: '/',
@@ -66,6 +66,17 @@ const routes = [
     path: '/productpage/:id',
     name: 'ProductPage',
     component: loadPage('ProductPage')
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: loadPage('CartPage')
+  },
+  {
+    path: '/pendingorder',
+    name: 'PendingOrderPage',
+    component: loadPage('PendingOrderPage'),
+    beforeEnter: authGuard
   }
 ]
 

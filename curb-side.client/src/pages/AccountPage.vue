@@ -35,6 +35,11 @@
         <h4>My Businesses</h4>
       </div>
     </div>
+    <div class="row mb-3 px-3 pointer" @click="logout()">
+      <div class="col dark-lines text-danger">
+        <h4>Logout</h4>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,6 +47,7 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState'
 import { useRouter } from 'vue-router'
+import { AuthService } from '../services/AuthService'
 export default {
   name: 'Account',
   setup() {
@@ -53,6 +59,9 @@ export default {
       },
       createBusiness() {
         router.push({ name: 'CreateBusiness' })
+      },
+      async logout() {
+        await AuthService.logout({ returnTo: window.location.origin })
       }
     }
   }

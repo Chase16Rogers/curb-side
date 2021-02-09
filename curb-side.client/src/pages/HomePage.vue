@@ -14,7 +14,7 @@
         </h1>
       </div>
     </div>
-    <form
+    <div
       id="search-form"
       class="row search-row h-25 align-items-end justify-content-center"
     >
@@ -28,7 +28,7 @@
               type="text"
             />
           </div>
-          <div class="col-sm-6 col-md-3 offset-sm-3 offset-md-0 mt-3">
+          <div class="col-6 col-md-3 d-flex justify-content-center mt-3">
             <button
               type="button"
               @click="search"
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-    </form>
+    </div>
 
     <div class="row h-50 bottom-row align-items-end justify-content-center">
       <div class="col-xs-4 mb-3 col-md-3 offset-xs-3 offset-md-9">

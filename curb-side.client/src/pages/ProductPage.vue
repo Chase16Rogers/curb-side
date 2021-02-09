@@ -28,7 +28,7 @@
         <div class="row text-home justify-content-end pt-5">
           <div class="col-10">
             <div class="row">
-              <textarea name="metaData" id="metaData" class="w-100 input-field rounded" placeholder="Special Instructions?"></textarea>
+              <textarea name="metaData" id="metaData" class="w-100 input-field rounded" v-model="state.product.instructions" placeholder="Special Instructions?"></textarea>
             </div>
             <div class="row btn-home justify-content-end mt-3">
               <button class="btn btn-primary text-white mb-4 " @click="orderItem">
@@ -47,9 +47,10 @@
 <script>
 import { computed, onMounted, reactive } from 'vue'
 import { productsService } from '../services/ProductsService'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { businessService } from '../services/BusinessService'
+import { cartService } from '../services/CartService'
 
 export default {
   name: 'ProductPage',
@@ -57,15 +58,23 @@ export default {
   setup() {
     const state = reactive({ product: computed(() => AppState.activeProduct), logo: computed(() => AppState.activeBusiness ? AppState.activeBusiness.logo : '') })
     const route = useRoute()
+    const router = useRouter()
     onMounted(async() => {
       await productsService.getProductById(route.params.id)
       console.log(state)
       await businessService.getOneBusiness(state.product.businessId)
     })
-    return { state }
-  },
-  components: {}
+    return {
+      state,
+      orderItem() {
+        if (cartService.addToCart(state.product)) {
+          router.push({ name: 'StoreFront', params: { id: state.product.businessId } })
+        }
+      }
+    }
+  }
 }
+
 </script>
 
 <style lang="scss" scoped>
