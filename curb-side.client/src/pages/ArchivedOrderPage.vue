@@ -30,7 +30,7 @@ export default {
     onMounted(async() => {
       try {
         await orderService.getOrders(route.params.id)
-        // AppState.orders = AppState.orders.filter(o => o.status !== 'pending')
+        AppState.orders = AppState.orders.filter(o => o.status !== 'pending')
       } catch (error) {
         logger.error(error)
       }
