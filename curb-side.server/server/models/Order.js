@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import Product from "./Product"
 const Schema = mongoose.Schema
 const ObjectId = mongoose.Schema.Types.ObjectId
 const contentSchema = new Schema(
@@ -17,7 +18,7 @@ const Order = new Schema(
     customerId: { type: String, required: true },
     here: { type: Boolean, required: true, default: false },
     status: { type: String, required: true, enum: ['pending', 'cancelledByCustomer', 'cancelledByBusiness', 'completed'], default: 'pending' },
-    subTotal: { type: Number, required: true, default: 0 },
+
     contents: [contentSchema]
   },
   { timestamps: true, toJSON: { virtuals: true } }
@@ -34,5 +35,16 @@ contentSchema.virtual('product', {
   ref: 'Product',
   foreignField: '_id',
   justOne: true
+})
+Order.virtual("subTotal").get(function(){
+
+let subTotal = 0
+this.contents.forEach(c=>
+  {
+    if(!c.product)
+    {return}
+    subTotal+=c.product.price*c.quantity
+  })
+  return subTotal
 })
 export default Order

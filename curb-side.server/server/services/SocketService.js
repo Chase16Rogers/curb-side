@@ -5,7 +5,7 @@ import { attachHandlers } from '../../Setup'
 import { accountService } from './AccountService'
 class SocketService {
   io = SocketIO();
-  /**
+  /** 
    * @param {SocketIO.Server} io
    */
   setIO(io) {
