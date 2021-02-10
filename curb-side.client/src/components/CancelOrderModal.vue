@@ -10,7 +10,7 @@
         </div>
 
         <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-secondary mr-5" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary mr-5" data-dismiss="modal">
             Nevermind
           </button>
           <button type="button" @click="cancelledOrder()" class="btn btn-primary">
@@ -47,7 +47,7 @@ export default {
           $('#canid' + props.cancelProp).modal('hide')
           AppState.spin = true
           await orderService.editOrder(props.cancelProp, { status: 'cancelledByBusiness' })
-          AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+          // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
           AppState.spin = false
         } catch (error) {
           logger.error(error)

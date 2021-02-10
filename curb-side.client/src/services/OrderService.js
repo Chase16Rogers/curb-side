@@ -29,9 +29,9 @@ class OrderService {
   }
 
   async editOrder(id, data) {
-    const res = await api.put('api/orders/' + id, data)
+    await api.put('api/orders/' + id, data)
     const index = AppState.orders.findIndex(o => o._id === id)
-    AppState.orders.splice(index, 1, res.data)
+    AppState.orders.splice(index, 1)
   }
 }
 export const orderService = new OrderService()

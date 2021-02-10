@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, onUnmounted, reactive } from 'vue'
 import { orderService } from '../services/OrderService'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
@@ -28,12 +28,16 @@ export default {
       orders: computed(() => AppState.orders)
     })
     onMounted(async() => {
+      // AppState.date = ''
       try {
         await orderService.getOrders(route.params.id)
         AppState.orders = AppState.orders.filter(o => o.status !== 'pending')
       } catch (error) {
         logger.error(error)
       }
+    })
+    onUnmounted(() => {
+      AppState.date = ''
     })
     return {
       state,

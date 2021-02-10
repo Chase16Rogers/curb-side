@@ -47,7 +47,7 @@ export default {
           $('#id' + props.completeProp).modal('hide')
           AppState.spin = true
           await orderService.editOrder(props.completeProp, { status: 'completed' })
-          AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+          // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
           AppState.spin = false
         } catch (error) {
           logger.error(error)

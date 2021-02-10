@@ -10,14 +10,18 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { socketService } from '../services/SocketService'
 export default {
   name: 'ChatComponent',
   props: {
     chatProp: { type: Object, required: true }
   },
-  setup(props) {
+  setup() {
+    onMounted(() => {
+      socketService.emit('update:message', 'general')
+    })
     const state = reactive({
       chat: computed(() => AppState.chat),
       business: computed(() => AppState.activeBusiness)
