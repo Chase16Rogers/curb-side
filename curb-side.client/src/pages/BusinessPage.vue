@@ -67,7 +67,7 @@ export default {
       async createBusiness() {
         try {
           await businessService.createBusiness(state.newBusiness)
-          router.push({ name: 'MyBusinessess' })
+          router.push({ name: 'MyBusinesses' })
         } catch (error) {
           logger.error(error)
         }
