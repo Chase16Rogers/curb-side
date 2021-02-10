@@ -155,11 +155,17 @@ export default {
       time() {
         const date = new Date(props.orderProp.createdAt)
         let hours = date.getHours()
-        const minutes = date.getMinutes()
+        let suffix = ' AM'
+        // NOTE
+        let minutes = date.getMinutes()
+        if (minutes < 10) {
+          minutes = '0' + minutes
+        }
         if (hours > 12) {
           hours -= 12
+          suffix = ' PM'
         }
-        return hours + ':' + minutes
+        return hours + ':' + minutes + suffix
       },
 
       async getChat() {

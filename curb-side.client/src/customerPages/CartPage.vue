@@ -39,8 +39,10 @@ export default {
     const router = useRouter()
     onMounted(async() => {
       try {
-        await businessService.getOneBusiness(state.cart.businessId)
         state.empty = !cartService.getCart()
+        if (!state.empty) {
+          await businessService.getOneBusiness(state.cart.businessId)
+        }
       } catch (error) {
         logger.error(error)
       }
