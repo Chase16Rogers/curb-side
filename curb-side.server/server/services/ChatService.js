@@ -1,5 +1,6 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
+import socketService from "./SocketService"
 
 class ChatService {
   // gets all chats by order
@@ -34,6 +35,7 @@ class ChatService {
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
+    socketService.messageRoom('general', 'update:message', res)
     return res
   }
 

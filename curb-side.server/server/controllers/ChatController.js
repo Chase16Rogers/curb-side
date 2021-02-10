@@ -24,6 +24,11 @@ export class ChatController extends BaseController {
   async edit(req, res, next) {
     try {
       const val = req.body
+      if (val.content.length <= 0){
+        val.content[0].senderId = req.userInfo.id
+      } else {
+        val.content[val.content.length - 1].senderId = req.userInfo.id
+      }
       const query = { _id: req.params.id }
       const data = await chatService.edit(val, query)
       res.send(data)

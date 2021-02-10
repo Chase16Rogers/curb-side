@@ -1,5 +1,6 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
+import socketService from "./SocketService"
 
 class OrderService {
   async getMyOrders(query) {
@@ -29,7 +30,8 @@ class OrderService {
     if (!res) {
       throw new BadRequest('Not Enough Data')
     }
-    let val = await dbContext.Orders.findById(res.id).populate('contents.product')
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product creator')
+    socketService.messageRoom('general', 'create:order', val)
     return val
 
   }
@@ -40,16 +42,19 @@ class OrderService {
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
-    let val = await dbContext.Orders.findById(res.id).populate('contents.product')
-    return val
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product creator')
+  switch(data.status){
+    case "cancelledByCustomer":
+    socketService.messageRoom('general', 'update:ordercbc', val)
+    break
+    case "cancelledByBusiness":
+      socketService.messageRoom('general', 'update:ordercbb', val)
+      break
+    case "completed":
+      socketService.messageRoom('general', 'update:orderc', val)
   }
-
-  async delete(query) {
-    const res = await dbContext.Orders.findOneAndDelete(query)
-    if (!res) {
-      throw new BadRequest('Invalid Id')
-    }
-    return 'Deleted'
+    return val
   }
 }
 export const orderService = new OrderService()
+

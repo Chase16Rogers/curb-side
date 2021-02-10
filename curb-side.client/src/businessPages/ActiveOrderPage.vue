@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, onMounted, computed, onUnmounted } from 'vue'
 import { logger } from '../utils/Logger'
 import { orderService } from '../services/OrderService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { businessService } from '../services/BusinessService'
-
+import { socketService } from '../services/SocketService'
 export default {
   name: 'ActiveOrder',
   setup() {
@@ -34,6 +34,9 @@ export default {
       spin: computed(() => AppState.spin)
     })
     onMounted(async() => {
+      socketService.emit('create:order', 'general')
+      socketService.emit('update:ordercbc', 'general')
+      socketService.emit('join:room', 'general')
       try {
         await orderService.getOrders(route.params.id)
         AppState.orders = AppState.orders.filter(o => o.status === 'pending')
@@ -42,6 +45,9 @@ export default {
       } catch (error) {
         logger.error(error)
       }
+    })
+    onUnmounted(() => {
+      AppState.date = ''
     })
     return {
       state
