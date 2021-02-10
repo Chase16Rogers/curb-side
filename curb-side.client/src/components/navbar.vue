@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark row">
     <div class="button-div navbar row d-none justify-content-end">
-      <i class="fa mr-3 fa-shopping-cart mobile-cart-icon text-white" aria-hidden="true"></i>
+      <router-link class="" :to="{ name: 'Cart' }">
+        <i class="fa mr-3 fa-shopping-cart mobile-cart-icon text-white" aria-hidden="true"></i>
+      </router-link>
     </div>
     <div class="hex-home mx-5">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">

@@ -1,33 +1,29 @@
 <template>
-  <div class="cart-product-component col-12 my-2 elevation-5">
+  <div class="cart-product-component col-12 border-bottom">
     <div class="row pc-row h-100" @click="productPage">
-      <div class="col-4 product-img" :style="`background-image: url(${p.img})`">
+      <div class="col-3 product-img-col d-flex align-items-center">
+        <div class="product-img w-100 " :style="`background-image: url(${p.img})`"></div>
       </div>
-      <div class="col-6 h-100">
+      <div class="col-md-6 col-8 h-100">
         <div class="row px-3 mt-1 mb-3 h-25 justify-content-between">
           <p class="f-14 product-name w-75">
             {{ p.name }}
           </p>
           <p class="f-14 product-price text-muted">
-            ${{ p.price.toFixed(2) }}
+            ${{ (p.quantity * p.price).toFixed(2) }}
           </p>
         </div>
-        <div class="row px-3 f-14 h-75">
-          <p> {{ p.description.length > 100 ? p.description.slice(0,100)+'...' : p.description }}</p>
+        <div class="row px-3 f-14 h-75" v-if="p.instructions">
+          <p> {{ p.instructions.length > 80 ? p.instructions.slice(0,80)+'...' : p.instructions }}</p>
         </div>
       </div>
-      <div class="col-2">
-        <div class="row flex-lg-nowrap flex-wrap quantity-row mt-3 align-items-center justify-content-center">
-          <i @click="changeQuantity(-1)" class="pointer rl fa fa-caret-left f-l mr-2"></i>
+      <div class="col-md-3 col-4">
+        <div class="row flex-lg-nowrap flex-wrap quantity-row align-items-center justify-content-center">
+          <i @click="changeQuantity(-1)" v-if="changeQty" class="pointer rl fa fa-caret-left arr f-l mr-2"></i>
           <div class="d-flex align-items-center circle  bg-primary text-dark justify-content-center">
             {{ p.quantity }}
           </div>
-          <i @click="changeQuantity(1)" class="pointer rr fa fa-caret-right f-l ml-2"></i>
-        </div>
-        <div class="row text-center mt-4 justify-content-center">
-          <p class="f-14 text-muted text-center">
-            ${{ (p.quantity * p.price).toFixed(2) }}
-          </p>
+          <i @click="changeQuantity(1)" v-if="changeQty" class="pointer rr fa fa-caret-right arr f-l ml-2"></i>
         </div>
       </div>
     </div>
@@ -48,6 +44,10 @@ export default {
     bool: {
       type: Boolean,
       default: false
+    },
+    changeQty: {
+      type: Boolean,
+      default: true
     }
 
   },
@@ -89,6 +89,8 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
         min-height: 140px;
+        border-radius: 10px;
+        height: 50%;
     }
 p {overflow: hidden;}
 .product-price {
@@ -119,6 +121,9 @@ p {overflow: hidden;}
   .rr{
     transform: rotateZ(-90deg) !important;
     margin: 0px !important;
+  }
+  .product-img-col{
+    display: none !important;
   }
 }
   </style>

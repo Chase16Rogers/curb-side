@@ -79,9 +79,9 @@ const routes = [
     component: loadPage('customerPages', 'CartPage')
   },
   {
-    path: '/pendingorder',
-    name: 'PendingOrderPage',
-    component: loadPage('customerPages', 'PendingOrderPage'),
+    path: '/order/:id',
+    name: 'OrderPage',
+    component: loadPage('customerPages', 'OrderPage'),
     beforeEnter: authGuard
   }
 ]

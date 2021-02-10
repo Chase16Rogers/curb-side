@@ -49,6 +49,7 @@ export class OrderController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      //REVIEW Edit should be more limited in scope
       const val = req.body
       val.creatorId = req.userInfo.id
       const query = { _id: req.params.id, creatorId: req.userInfo.id }

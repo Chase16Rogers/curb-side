@@ -23,7 +23,7 @@ class OrderService {
     if (res.status === 200) {
       AppState.cart = {}
       localStorage.removeItem('cart')
-      return true
+      return res.data
     }
     return false
   }
@@ -32,6 +32,19 @@ class OrderService {
     const res = await api.put('api/orders/' + id, data)
     const index = AppState.orders.findIndex(o => o._id === id)
     AppState.orders.splice(index, 1, res.data)
+  }
+
+  async getOrder(id) {
+    const res = await api.get('api/orders/' + id)
+    const arr = []
+    res.data.contents.forEach(p => arr.push({ ...p.product, quantity: p.quantity }))
+    res.data.contents = arr
+    AppState.activeOrder = res.data
+  }
+
+  async arrive(id) {
+    const res = await api.put('api/orders/' + id, { here: true })
+    AppState.activeOrder = res.data
   }
 }
 export const orderService = new OrderService()
