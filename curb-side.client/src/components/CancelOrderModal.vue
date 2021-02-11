@@ -28,6 +28,7 @@ import { AppState } from '../AppState'
 import { orderService } from '../services/OrderService'
 import { logger } from '../utils/Logger'
 import $ from 'jquery'
+import { socketService } from '../services/SocketService'
 export default {
   name: 'CancelOrderModal',
   props: {
@@ -48,6 +49,7 @@ export default {
           AppState.spin = true
           await orderService.editOrder(props.cancelProp, { status: 'cancelledByBusiness' })
           // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+          socketService.emit('leave:room', props.orderProp._id)
           AppState.spin = false
         } catch (error) {
           logger.error(error)

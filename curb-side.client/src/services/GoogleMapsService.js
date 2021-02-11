@@ -3,7 +3,6 @@ import { api, googleApi } from './AxiosService'
 
 class GoogleMapsService {
   async findByDistance(address) {
-    debugger
     const businesses = await api.get('api/businesses')
     let allAddresses = ''
     businesses.data.forEach(b => {

@@ -34,7 +34,7 @@
             </p>
           </div>
           <div class="offset-1 col-3">
-            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" data-target="#chatModal"></i>
+            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" :data-target="'#chat'+ orderProp._id"></i>
           </div>
         </div>
         <div class="row">
@@ -80,7 +80,7 @@
   <!-- Modal -->
   <div class="modal fade bg-light"
        data-backdrop="static"
-       id="chatModal"
+       :id="'chat'+ orderProp._id"
        tabindex="-1"
        aria-labelledby="exampleModalLabel"
        aria-hidden="true"
@@ -88,7 +88,7 @@
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="d-flex justify-content-end">
-          <i class="fa fa-times-circle-o" @click="closeModal()" aria-hidden="true" data-dismiss="modal"></i>
+          <i class="fa fa-times-circle-o" @click="closeModal(orderProp._id)" aria-hidden="true"></i>
         </div>
         <div class="modal-body">
           <chat-component :chat-prop="state.chat" />
@@ -117,6 +117,8 @@ import { computed, onMounted, reactive } from 'vue'
 import { chatService } from '../services/ChatService'
 import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
+import { socketService } from '../services/SocketService'
+import $ from 'jquery'
 export default {
   name: 'OrderComponent',
   props: {
@@ -131,7 +133,7 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      chat: computed(() => AppState.chat[0] || AppState.chat),
+      chat: computed(() => AppState.chat),
       message: '',
       orderDate: computed(() => AppState.date),
       showDate: false,
@@ -162,12 +164,15 @@ export default {
 
       async getChat() {
         try {
+          socketService.emit('join:room', props.orderProp._id)
           await chatService.getChats(props.orderProp._id)
         } catch (error) {
           logger.error(error)
         }
       },
-      closeModal() {
+      closeModal(id) {
+        $('#chat' + id).modal('hide')
+        socketService.emit('leave:room', id)
         AppState.chat = {}
       },
       async createMessage() {

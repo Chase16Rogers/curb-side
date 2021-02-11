@@ -36,7 +36,6 @@ export default {
     onMounted(async() => {
       socketService.emit('create:order', 'general')
       socketService.emit('update:ordercbc', 'general')
-      socketService.emit('join:room', 'general')
       try {
         await orderService.getOrders(route.params.id)
         AppState.orders = AppState.orders.filter(o => o.status === 'pending')

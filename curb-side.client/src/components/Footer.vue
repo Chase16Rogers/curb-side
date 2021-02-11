@@ -1,6 +1,8 @@
 <template>
   <div class="footer">
-    <div class="bg-dark text-light text-center p-4">Made with 💖</div>
+    <div class="bg-dark text-light text-center p-4">
+      Made with 💖
+    </div>
   </div>
 </template>
 
