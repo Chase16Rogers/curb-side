@@ -18,7 +18,9 @@
         <div class="row justify-content-center">
         </div>
         <div class="row justify-content-around cart-row" v-if="state.order.contents">
-          <cart-product-component v-for="p in state.order.contents" :key="p.id" :p="p" :change-qty="false" />
+          <div class="col-12">
+            <cart-product-component v-for="p in state.order.contents" :key="p.id" :p="p" :change-qty="false" />
+          </div>
         </div>
       </div>
 
@@ -48,7 +50,7 @@
             </div>
             <div class="row">
               <div class="col-8">
-                <button @click="submitForm" class="btn btn-outline-dark bg-white elevation-5">
+                <button @click="submitForm" class="btn btn-outline-secondary px-5 elevation-5">
                   I Have Arrived!
                 </button>
               </div>
@@ -107,5 +109,9 @@ export default {
 <style lang="scss" scoped>
 input{
   width: 100px;
+}
+.logo {
+  width: 80px;
+  height: 80px;
 }
 </style>

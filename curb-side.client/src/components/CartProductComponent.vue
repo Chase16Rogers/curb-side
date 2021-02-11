@@ -1,29 +1,31 @@
 <template>
-  <div class="cart-product-component col-12 border-bottom">
-    <div class="row pc-row h-100" @click="productPage">
-      <div class="col-3 product-img-col d-flex align-items-center">
-        <div class="product-img w-100 " :style="`background-image: url(${p.img})`"></div>
-      </div>
-      <div class="col-md-6 col-8 h-100">
-        <div class="row px-3 mt-1 mb-3 h-25 justify-content-between">
-          <p class="f-14 product-name w-75">
-            {{ p.name }}
-          </p>
-          <p class="f-14 product-price text-muted">
-            ${{ (p.quantity * p.price).toFixed(2) }}
-          </p>
+  <div class="cart-product-component row border-bottom">
+    <div class="col-12">
+      <div class="row justify-content-center pc-row h-100" @click="productPage">
+        <div class="col-3 product-img-col d-flex align-items-center">
+          <div class="product-img w-100 " :style="`background-image: url(${p.img})`"></div>
         </div>
-        <div class="row px-3 f-14 h-75" v-if="p.instructions">
-          <p> {{ p.instructions.length > 80 ? p.instructions.slice(0,80)+'...' : p.instructions }}</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-4">
-        <div class="row flex-lg-nowrap flex-wrap quantity-row align-items-center justify-content-center">
-          <i @click="changeQuantity(-1)" v-if="changeQty" class="pointer rl fa fa-caret-left arr f-l mr-2"></i>
-          <div class="d-flex align-items-center circle  bg-primary text-dark justify-content-center">
-            {{ p.quantity }}
+        <div class="col-md-6 col-7 h-100">
+          <div class="row px-3 mt-1 mb-3 h-25 justify-content-between">
+            <p class="f-14 product-name w-75">
+              {{ p.name }}
+            </p>
+            <p class="f-14 product-price text-muted">
+              ${{ (p.quantity * p.price).toFixed(2) }}
+            </p>
           </div>
-          <i @click="changeQuantity(1)" v-if="changeQty" class="pointer rr fa fa-caret-right arr f-l ml-2"></i>
+          <div class="row px-3 f-14 h-75" v-if="p.instructions">
+            <p> {{ p.instructions.length > 80 ? p.instructions.slice(0,80)+'...' : p.instructions }}</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-4">
+          <div class="row flex-lg-nowrap flex-wrap quantity-row align-items-center justify-content-center">
+            <i @click="changeQuantity(-1)" v-if="changeQty" class="pointer rl fa fa-caret-left arr f-l mr-2"></i>
+            <div class="d-flex align-items-center circle  bg-primary text-dark justify-content-center">
+              {{ p.quantity }}
+            </div>
+            <i @click="changeQuantity(1)" v-if="changeQty" class="pointer rr fa fa-caret-right arr f-l ml-2"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -78,7 +80,7 @@ export default {
     text-shadow: 1px 1px 0 $dark,  -1px 1px 0 $dark,  1px -1px 0 $dark,  -1px -1px 0 $dark;
     }
     .product-component{
-    min-height: 140px;
+    min-height: 90px;
 
     }
     .pc-row{
@@ -88,25 +90,25 @@ export default {
         background-position:center ;
         background-repeat: no-repeat;
         background-size: cover;
-        min-height: 140px;
+        min-height: 90px;
         border-radius: 10px;
         height: 50%;
     }
 p {overflow: hidden;}
 .product-price {
   position: absolute;
-  top: 4hpx;
+  top: 4px;
   right: 8px;
 }
 .circle {
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
 }
 .f-l{
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 @media only screen and (max-width: 600px) {

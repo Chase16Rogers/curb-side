@@ -13,6 +13,7 @@ class ChatService {
   }
 
   async getOne(id) {
+    debugger
     const res = await dbContext.Chats.findById(id)
     if (!res) {
       throw new BadRequest('Invalid Id')
