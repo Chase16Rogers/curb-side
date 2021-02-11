@@ -20,7 +20,7 @@
     >
       <div class="col-8">
         <div class="row justify-content-center">
-          <div class="mt-3 col-xs-10 col-md-6">
+          <div class=" col-xs-10 col-md-6">
             <input
               v-model="state.search"
               class="elevation-4"
@@ -28,7 +28,7 @@
               type="text"
             />
           </div>
-          <div class="col-6 col-md-3 d-flex justify-content-center mt-3">
+          <div class="col-6 col-md-3 d-flex justify-content-center ">
             <button
               type="button"
               @click="search"

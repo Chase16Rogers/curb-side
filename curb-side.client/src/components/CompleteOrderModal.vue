@@ -10,7 +10,7 @@
         </div>
 
         <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-secondary mr-5" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-secondary mr-5" data-dismiss="modal">
             Nevermind
           </button>
           <button type="button" @click="completedOrder()" class="btn btn-primary">
@@ -28,6 +28,7 @@ import { AppState } from '../AppState'
 import { orderService } from '../services/OrderService'
 import { logger } from '../utils/Logger'
 import $ from 'jquery'
+import { socketService } from '../services/SocketService'
 export default {
   name: 'CompleteOrderModal',
   props: {
@@ -47,6 +48,7 @@ export default {
           $('#id' + props.completeProp).modal('hide')
           AppState.spin = true
           await orderService.editOrder(props.completeProp, { status: 'completed' })
+          socketService.emit('leave:room', props.completeProp._id)
           // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
           AppState.spin = false
         } catch (error) {

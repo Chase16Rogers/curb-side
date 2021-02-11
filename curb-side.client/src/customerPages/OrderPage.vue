@@ -18,7 +18,9 @@
         <div class="row justify-content-center">
         </div>
         <div class="row justify-content-around cart-row" v-if="state.order.contents">
-          <cart-product-component v-for="p in state.order.contents" :key="p.id" :p="p" :change-qty="false" />
+          <div class="col-12">
+            <cart-product-component v-for="p in state.order.contents" :key="p.id" :p="p" :change-qty="false" />
+          </div>
         </div>
       </div>
 
@@ -48,7 +50,7 @@
             </div>
             <div class="row">
               <div class="col-8">
-                <button @click="submitForm" class="btn btn-outline-dark bg-white elevation-5">
+                <button @click="submitForm" class="btn btn-outline-secondary px-5 elevation-5">
                   I Have Arrived!
                 </button>
               </div>
@@ -57,6 +59,23 @@
         </div>
         <div class="row justify-content-center text-center" v-else>
           <h1>{{ state.business.name }} knows you have arrived!</h1>
+        </div>
+        <div class="row">
+          <div class="col">
+            <chat-component :chat-prop="state.chat" />
+            <form @submit.prevent="createMessage()">
+              <input class="border-0"
+                     type="text"
+                     id="message"
+                     name="message"
+                     v-model="state.message"
+                     placeholder="Send Message..."
+              >
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -70,16 +89,32 @@ import { orderService } from '../services/OrderService'
 import { AppState } from '../AppState'
 import { businessService } from '../services/BusinessService'
 import { logger } from '../utils/Logger'
+import { chatService } from '../services/ChatService'
+import { socketService } from '../services/SocketService'
 
 export default {
+
   name: 'OrderPage',
 
   setup() {
     const route = useRoute()
-    const state = reactive({ order: computed(() => AppState.activeOrder), business: computed(() => AppState.activeBusiness), colors: computed(() => AppState.colors), arrival: { carColor: '', make: '', model: '' } })
+    const state = reactive({
+      order: computed(() => AppState.activeOrder),
+      business: computed(() => AppState.activeBusiness),
+      colors: computed(() => AppState.colors),
+      arrival: { carColor: '', make: '', model: '' },
+      chat: computed(() => AppState.chat),
+      message: ''
+    })
     onMounted(async() => {
-      await orderService.getOrder(route.params.id)
-      await businessService.getOneBusiness(state.order.businessId)
+      try {
+        socketService.emit('join:room', route.params.id)
+        await orderService.getOrder(route.params.id)
+        await businessService.getOneBusiness(state.order.businessId)
+        await chatService.getChats(route.params.id)
+      } catch (error) {
+        logger.error(error)
+      }
     })
 
     return {
@@ -91,6 +126,14 @@ export default {
         }
         state.arrival.carColor = color
         state.colors[index].isSelected = true
+      },
+      async createMessage() {
+        try {
+          await chatService.createMessage(state.message)
+          state.message = ''
+        } catch (error) {
+          logger.error(error)
+        }
       },
       async submitForm() {
         try {
@@ -107,5 +150,9 @@ export default {
 <style lang="scss" scoped>
 input{
   width: 100px;
+}
+.logo {
+  width: 80px;
+  height: 80px;
 }
 </style>

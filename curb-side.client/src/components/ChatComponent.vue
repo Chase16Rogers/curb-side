@@ -18,9 +18,9 @@ export default {
   props: {
     chatProp: { type: Object, required: true }
   },
-  setup() {
+  setup(props) {
     onMounted(() => {
-      socketService.emit('update:message', 'general')
+      socketService.emit('update:message', props.chatProp.orderId)
     })
     const state = reactive({
       chat: computed(() => AppState.chat),

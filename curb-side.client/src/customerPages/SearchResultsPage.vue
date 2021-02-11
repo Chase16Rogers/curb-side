@@ -36,7 +36,6 @@ export default {
       try {
         // await googleMapsService.findByDistance(route.params.search)
         await searchService.getAll()
-        debugger
       } catch (error) {
         console.log(error)
       }
