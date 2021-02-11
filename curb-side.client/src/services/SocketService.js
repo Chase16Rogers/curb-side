@@ -9,6 +9,7 @@ class SocketService extends SocketHandler {
       .on('update:ordercbb', this.updateCustomerOrder)
       .on('update:orderc', this.updateCustomerOrder)
       .on('update:ordercbc', this.updateBusinessOrder)
+      .on('update:orderh', this.updateBusinessOrder)
       .on('update:message', this.updateChat)
   }
 

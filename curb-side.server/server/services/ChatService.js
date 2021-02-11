@@ -36,7 +36,7 @@ class ChatService {
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
-    socketService.messageRoom('general', 'update:message', res)
+    socketService.messageRoom(res.orderId, 'update:message', res)
     return res
   }
 

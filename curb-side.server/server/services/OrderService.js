@@ -53,6 +53,9 @@ class OrderService {
     case "completed":
       socketService.messageRoom('general', 'update:orderc', val)
   }
+  if(data.here){
+    socketService.messageRoom('general', 'update:orderh', val)
+  }
     return val
   }
 }

@@ -60,6 +60,23 @@
         <div class="row justify-content-center text-center" v-else>
           <h1>{{ state.business.name }} knows you have arrived!</h1>
         </div>
+        <div class="row">
+          <div class="col">
+            <chat-component :chat-prop="state.chat" />
+            <form @submit.prevent="createMessage()">
+              <input class="border-0"
+                     type="text"
+                     id="message"
+                     name="message"
+                     v-model="state.message"
+                     placeholder="Send Message..."
+              >
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -72,16 +89,32 @@ import { orderService } from '../services/OrderService'
 import { AppState } from '../AppState'
 import { businessService } from '../services/BusinessService'
 import { logger } from '../utils/Logger'
+import { chatService } from '../services/ChatService'
+import { socketService } from '../services/SocketService'
 
 export default {
+
   name: 'OrderPage',
 
   setup() {
     const route = useRoute()
-    const state = reactive({ order: computed(() => AppState.activeOrder), business: computed(() => AppState.activeBusiness), colors: computed(() => AppState.colors), arrival: { carColor: '', make: '', model: '' } })
+    const state = reactive({
+      order: computed(() => AppState.activeOrder),
+      business: computed(() => AppState.activeBusiness),
+      colors: computed(() => AppState.colors),
+      arrival: { carColor: '', make: '', model: '' },
+      chat: computed(() => AppState.chat),
+      message: ''
+    })
     onMounted(async() => {
-      await orderService.getOrder(route.params.id)
-      await businessService.getOneBusiness(state.order.businessId)
+      try {
+        socketService.emit('join:room', route.params.id)
+        await orderService.getOrder(route.params.id)
+        await businessService.getOneBusiness(state.order.businessId)
+        await chatService.getChats(route.params.id)
+      } catch (error) {
+        logger.error(error)
+      }
     })
 
     return {
@@ -93,6 +126,14 @@ export default {
         }
         state.arrival.carColor = color
         state.colors[index].isSelected = true
+      },
+      async createMessage() {
+        try {
+          await chatService.createMessage(state.message)
+          state.message = ''
+        } catch (error) {
+          logger.error(error)
+        }
       },
       async submitForm() {
         try {
