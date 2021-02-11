@@ -48,7 +48,7 @@ export default {
           $('#id' + props.completeProp).modal('hide')
           AppState.spin = true
           await orderService.editOrder(props.completeProp, { status: 'completed' })
-          socketService.emit('leave:room', props.orderProp._id)
+          socketService.emit('leave:room', props.completeProp._id)
           // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
           AppState.spin = false
         } catch (error) {
