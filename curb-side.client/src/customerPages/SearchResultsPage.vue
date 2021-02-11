@@ -22,21 +22,21 @@
 import { reactive, computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { searchService } from '../services/SearchService'
-import { googleMapsService } from '../services/GoogleMapsService'
-import { useRoute } from 'vue-router'
+// import { googleMapsService } from '../services/GoogleMapsService'
+// import { useRoute } from 'vue-router'
 export default {
   setup() {
     const state = reactive({
       buiz: computed(() => AppState.businesses)
     })
-    const route = useRoute()
+    // const route = useRoute()
     // const query = route.params.query
     onMounted(async() => {
       // NOTE Google data will eventually be here
       try {
-        await googleMapsService.findByDistance(route.params.search)
+        // await googleMapsService.findByDistance(route.params.search)
         await searchService.getAll()
-        debugger
+        // debugger
       } catch (error) {
         console.log(error)
       }
