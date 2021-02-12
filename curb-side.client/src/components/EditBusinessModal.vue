@@ -84,6 +84,8 @@ export default {
           $('#editBusiness').modal('hide')
           await businessService.editBusiness(route.params.id, state.newBusiness)
           state.newBusiness = {}
+          // eslint-disable-next-line no-undef
+          swal('Edited Business', 'Congratulation on editing your business successfully', 'success')
         } catch (error) {
           logger.error(error)
         }

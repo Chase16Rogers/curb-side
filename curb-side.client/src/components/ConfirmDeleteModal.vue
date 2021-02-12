@@ -46,6 +46,8 @@ export default {
           $('#canid' + props.deleteProp).modal('hide')
           // AppState.spin = true
           await productsService.deleteProduct(props.deleteProp)
+          // eslint-disable-next-line no-undef
+          swal('Product Deleted', 'Your Product is gone now!!', 'error')
           // AppState.spin = false
         } catch (error) {
           logger.error(error)
