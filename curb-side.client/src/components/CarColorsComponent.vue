@@ -12,6 +12,10 @@ export default {
     color: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
   },
   setup() {
@@ -27,8 +31,13 @@ export default {
     width: 40px;
     border-radius: 10px;
     border: 1px solid black;
+
 }
 .selected{
     filter: drop-shadow(1px 1px 5px black);
 }
+.car-colors-component {
+  flex-basis: 20% !important;
+}
+
 </style>

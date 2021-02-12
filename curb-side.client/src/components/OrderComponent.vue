@@ -94,7 +94,7 @@
           <chat-component :chat-prop="state.chat" />
         </div>
         <div class="modal-footer">
-          <form @submit.prevent="createMessage()">
+          <!-- <form @submit.prevent="createMessage()">
             <input class="border-0"
                    type="text"
                    id="message"
@@ -105,7 +105,7 @@
             <button type="submit" class="btn btn-primary">
               Save changes
             </button>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
