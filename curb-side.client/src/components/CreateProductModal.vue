@@ -79,6 +79,8 @@ export default {
           state.product.businessId = route.params.id
           await productsService.createProduct(state.product)
           state.product = {}
+          // eslint-disable-next-line no-undef
+          swal('Product Created', 'Your product is created, Congratulations', 'success')
         } catch (error) {
           logger.error(error)
         }

@@ -82,6 +82,8 @@ export default {
           state.product.businessId = route.params.id
           await productsService.editProduct(props.editProductProp, state.product)
           state.product = {}
+          // eslint-disable-next-line no-undef
+          swal('Edited Product', 'Congratulations on successfully editing your product!! ', 'success')
         } catch (error) {
           logger.error(error)
         }
