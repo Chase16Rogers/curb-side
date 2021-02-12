@@ -18,7 +18,7 @@ class BusinessService {
     const res = await dbContext.Businesses.find({
       location: {
        $near: {
-        $maxDistance: 20000,
+        $maxDistance: 8000,
         $geometry: {
          type: "Point",
          coordinates: coords

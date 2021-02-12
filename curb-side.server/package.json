@@ -14,13 +14,14 @@
   "license": "ISC",
   "dependencies": {
     "@bcwdev/auth0provider": "^1.0.3",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
     "mongoose": "^5.11.12",
-    "axios": "^0.21.1",
+    "mongoose-geojson-schema": "^2.1.5",
     "socket.io": "2.3.0"
   },
   "engines": {
