@@ -1,16 +1,14 @@
 <template>
-  <div class="row" :class="toggle(messageProp.message.senderId)">
+  <div class="col-12 my-2" :class="toggle(messageProp.message.senderId)">
     <!-- <div class="col-2 d-flex align-items-center" v-if="!state.right">
       <img class="img-fluid" :src="state.business.logo" alt="">
     </div> -->
-    <div class="col-8">
-      <div class="card">
-        <div class="card-body">
-          {{ messageProp.message.message }}
-        </div>
+    <div class="w-fc msg px-3 py-2" :class="[ state.right ? 'bg-primary text-white': 'bg-info-light text-dark']">
+      <div class="msg-txt">
+        {{ messageProp.message.message }}
       </div>
     </div>
-    <div class="col-2 d-flex align-items-center" v-if="state.right">
+    <div class="col-2 d-flex align-items-center" v-if="state.left">
       <img class="img-fluid" :src="state.business.logo" alt="">
     </div>
   </div>
@@ -46,6 +44,18 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import '../assets/scss/_variables.scss';
+.bg-info-light {
+  background-color: $info-light;
+}
+.msg {
+  border-radius: 15px;
+}
+.w-fc {
+  width: fit-content !important;
+}
+.msg-txt {
+  font-size: 1.2rem;
+}
 </style>
