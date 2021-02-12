@@ -10,6 +10,10 @@ export const api = Axios.create({
   timeout: 8000
 })
 
+export const latApi = Axios.create({
+  baseURL: 'https://maps.googleapis.com/maps/api/geocode'
+})
+
 export const setBearer = function(bearer) {
   api.defaults.headers.authorization = bearer
 }

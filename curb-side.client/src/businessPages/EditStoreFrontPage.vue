@@ -31,7 +31,7 @@
         </div>
         <div class="row">
           <p class="f-16">
-            {{ business.location }}
+            {{ business.address }}
           </p>
         </div>
         <div class="row">

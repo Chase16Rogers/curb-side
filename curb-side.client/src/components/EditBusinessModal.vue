@@ -42,7 +42,7 @@
                     type="text"
                     name="address"
                     placeholder="What's your business's address"
-                    v-model="state.newBusiness.location"
+                    v-model="state.newBusiness.address"
                   />
                 </div>
               </div>
