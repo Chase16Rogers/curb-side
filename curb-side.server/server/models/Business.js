@@ -6,7 +6,11 @@ const Business = new Schema(
     logo: { type: String, default: 'https://thiscatdoesnotexist.com' },
     name: { type: String, required: true },
     tags: { type: Array },
-    location: { type: String, required: true }
+    address: { type: String, required: true },
+    location: { 
+      type: {type:String, default: 'point'},
+      coordinates: {type: Array, default: [0, 0]}
+    }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )

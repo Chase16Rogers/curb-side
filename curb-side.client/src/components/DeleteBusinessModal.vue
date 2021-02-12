@@ -44,6 +44,8 @@ export default {
           router.push({ name: 'Account' })
           // AppState.spin = true
           await businessService.deleteBusiness(route.params.id)
+          // eslint-disable-next-line no-undef
+          swal('Business Deleted', 'Your business is no longer here with us!!', 'error')
           // AppState.spin = false
         } catch (error) {
           logger.error(error)

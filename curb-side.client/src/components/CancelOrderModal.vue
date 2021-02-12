@@ -49,7 +49,9 @@ export default {
           AppState.spin = true
           await orderService.editOrder(props.cancelProp, { status: 'cancelledByBusiness' })
           // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
-          socketService.emit('leave:room', props.orderProp._id)
+          socketService.emit('leave:room', props.cancelProp._id)
+          // eslint-disable-next-line no-undef
+          swal('Order Cancelled By the Business', 'You will lose money!!', 'error')
           AppState.spin = false
         } catch (error) {
           logger.error(error)

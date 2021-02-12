@@ -43,7 +43,7 @@
 
     <div class="row h-50 bottom-row align-items-end justify-content-center">
       <div class="col-xs-4 mb-3 col-md-3 offset-xs-3 offset-md-9">
-        <button class="btn btn-outline-dark elevation-3 register-btn">
+        <button class="btn btn-outline-dark elevation-3 register-btn" @click="createBusiness()">
           Register your business with us!
         </button>
       </div>
@@ -64,6 +64,9 @@ export default {
       state,
       search() {
         router.push({ name: 'SearchResults', params: { search: state.search } })
+      },
+      createBusiness() {
+        router.push({ name: 'CreateBusiness' })
       }
     }
   }

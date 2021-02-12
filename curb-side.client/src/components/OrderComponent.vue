@@ -135,19 +135,17 @@ export default {
     const state = reactive({
       chat: computed(() => AppState.chat),
       message: '',
-      // orderDate: computed(() => AppState.date),
-      showDate: true,
+      orderDate: computed(() => AppState.date),
+      showDate: false,
       activeArchive: true
     })
     onMounted(() => {
-      const orderDate = AppState.date
-      if (props.orderProp.date === orderDate) {
+      if (props.orderProp.date === state.orderDate) {
         state.showDate = false
-        // AppState.date = props.orderProp.date
       } else {
         state.showDate = true
-        AppState.date = props.orderProp.date
       }
+      AppState.date = props.orderProp.date
       if (props.archived) {
         state.activeArchive = false
       }
@@ -157,17 +155,11 @@ export default {
       time() {
         const date = new Date(props.orderProp.createdAt)
         let hours = date.getHours()
-        let suffix = ' AM'
-        // NOTE
-        let minutes = date.getMinutes()
-        if (minutes < 10) {
-          minutes = '0' + minutes
-        }
+        const minutes = date.getMinutes()
         if (hours > 12) {
           hours -= 12
-          suffix = ' PM'
         }
-        return hours + ':' + minutes + suffix
+        return hours + ':' + minutes
       },
 
       async getChat() {

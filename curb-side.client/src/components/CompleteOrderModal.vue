@@ -48,8 +48,9 @@ export default {
           $('#id' + props.completeProp).modal('hide')
           AppState.spin = true
           await orderService.editOrder(props.completeProp, { status: 'completed' })
-          socketService.emit('leave:room', props.orderProp._id)
-          // AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+          socketService.emit('leave:room', props.completeProp._id)
+          // eslint-disable-next-line no-undef
+          swal('Order Completed', 'Congratulation on completing the order. Finally YOU did it!!', 'success')
           AppState.spin = false
         } catch (error) {
           logger.error(error)
@@ -61,5 +62,8 @@ export default {
 </script>
 
 <style>
-
+imageUrl{
+  height: 50px;
+  width: 50px;
+}
 </style>
