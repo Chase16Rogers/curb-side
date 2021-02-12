@@ -3,8 +3,29 @@ import { BadRequest } from '../utils/Errors'
 import { latApi } from "./AxiosService"
 
 class BusinessService {
-  async getAll(query = {}) {
+  async getAll(query) {
     const res = await dbContext.Businesses.find(query)
+    if (!res) {
+      throw new BadRequest('Invalid Search')
+    }
+    return res
+  }
+  async getAllNear(address) {
+    const lats = await latApi.get('json?address=' + address.address + '&key=AIzaSyDoW1Uw5M4sp85tE_yn6p0X5raQ8D-VWZM')
+    let coords = [lats.data.results[0].geometry.location.lng, lats.data.results[0].geometry.location.lat]
+    // let query = {}
+    // query{center: coords, maxDistance:10000, spherical: true}
+    const res = await dbContext.Businesses.find({
+      location: {
+       $near: {
+        $maxDistance: 20000,
+        $geometry: {
+         type: "Point",
+         coordinates: coords
+        }
+       }
+      }
+      })
     if (!res) {
       throw new BadRequest('Invalid Search')
     }

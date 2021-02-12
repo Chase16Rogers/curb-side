@@ -8,12 +8,14 @@ const Business = new Schema(
     tags: { type: Array },
     address: { type: String, required: true },
     location: { 
-      type: {type:String, default: 'point'},
+      type: 'Point',
       coordinates: {type: Array, default: [0, 0]}
     }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
+
+Business.index({ location: '2dsphere' })
 
 Business.virtual('creator', {
   localField: 'creatorId',

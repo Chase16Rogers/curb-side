@@ -21,7 +21,6 @@
 <script>
 import { reactive, computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
-import { searchService } from '../services/SearchService'
 // import { googleMapsService } from '../services/GoogleMapsService'
 // import { useRoute } from 'vue-router'
 export default {
@@ -35,7 +34,6 @@ export default {
       // NOTE Google data will eventually be here
       try {
         // await googleMapsService.findByDistance(route.params.search)
-        await searchService.getAll()
       } catch (error) {
         console.log(error)
       }

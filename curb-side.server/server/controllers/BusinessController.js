@@ -8,7 +8,7 @@ export class BusinessController extends BaseController {
   constructor() {
     super('api/businesses')
     this.router
-      .get('', this.getAll)
+      .get('/:address', this.getAll)
       .get('/:id', this.getOne)
       .get('/:id/products', this.getProducts)
       .use(Auth0Provider.getAuthorizedUserInfo)
@@ -20,7 +20,7 @@ export class BusinessController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await businessService.getAll()
+      const data = await businessService.getAllNear({address: req.params.address })
       res.send(data)
     } catch (error) {
       next(error)

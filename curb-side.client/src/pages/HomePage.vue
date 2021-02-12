@@ -53,17 +53,27 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { googleMapsService } from '../services/GoogleMapsService'
+import { logger } from '../utils/Logger'
 export default {
   name: 'Home',
 
   setup() {
-    const state = { search: '' }
+    const state = {
+      search: ''
+    }
     const router = useRouter()
 
     return {
       state,
-      search() {
-        router.push({ name: 'SearchResults', params: { search: state.search } })
+      async search() {
+        try {
+          debugger
+          await googleMapsService.findNearMe(state.search)
+        } catch (error) {
+          logger.error(error)
+        }
+        router.push({ name: 'SearchResults' })
       },
       createBusiness() {
         router.push({ name: 'CreateBusiness' })
