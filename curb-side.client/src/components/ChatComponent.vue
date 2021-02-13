@@ -38,9 +38,13 @@ export default {
   watch: {
     'state.chat'(newChat, oldChat) {
       console.log('#id-' + newChat._id)
-      const height = $('#id-' + newChat._id)[0]
+      const height = $('#id-' + newChat._id)[0].scrollHeight
       console.log(height)
       $('#id-' + newChat._id).animate({ scrollTop: height }, 500, 'swing')
+
+      console.log($('#id-' + newChat._id).is(':visible'))
+      const o = AppState.orders.find(o => o.id === newChat.orderId)
+      if (o) { o.unreads = !$('#id-' + newChat._id).is(':visible') }
     }
   },
   props: {
@@ -49,9 +53,6 @@ export default {
   setup(props) {
     onMounted(async() => {
       await socketService.emit('update:message', props.chatProp.orderId)
-      console.log('#id-' + props.chatProp._id)
-      const height = $('#id-' + props.chatProp._id)[0].scrollHeight
-      $('#id-' + props.chatProp._id).animate({ scrollTop: height }, 1, 'swing')
     })
     const state = reactive({
       chat: computed(() => props.chatProp),

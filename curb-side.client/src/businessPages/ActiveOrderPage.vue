@@ -40,6 +40,7 @@ export default {
       try {
         await orderService.getOrders(route.params.id)
         AppState.orders = AppState.orders.filter(o => o.status === 'pending')
+        socketService.emit('join:room', 'general')
         for (const ind in AppState.orders) {
           socketService.emit('join:room', AppState.orders[ind].id)
         }
