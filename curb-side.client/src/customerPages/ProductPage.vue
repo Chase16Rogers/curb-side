@@ -28,10 +28,10 @@
         <div class="row text-home justify-content-end pt-5">
           <div class="col-10">
             <div class="row">
-              <textarea name="metaData" id="metaData" class="w-100 input-field rounded" v-model="state.product.instructions" placeholder="Special Instructions?"></textarea>
+              <textarea name="metaData" id="metaData" class="hover-scale w-100 input-field rounded" v-model="state.product.instructions" placeholder="Special Instructions?"></textarea>
             </div>
             <div class="row btn-home justify-content-end mt-3">
-              <button class="btn btn-primary text-white mb-4 " @click="orderItem">
+              <button class="btn btn-primary text-white mb-4 hover-topleft" @click="orderItem">
                 Order Now
               </button>
             </div>
@@ -101,7 +101,6 @@ export default {
     background-position:center ;
     background-repeat: no-repeat;
     background-size: cover;
-    // height: 79vh;
 }
 @media only screen and (max-width: 600px){
     .prod-image{

@@ -1,7 +1,7 @@
 <template>
   <div class="store-front container-fluid">
     <div class="row">
-      <div class="col-12 banner-img">
+      <div class="col-12 banner-img elevation-3">
       </div>
     </div>
     <div class="row logo-row justify-content-end">
@@ -18,7 +18,7 @@
           <tag-component v-for="tag in business.tags" :key="tag.name" :tag="tag" />
         </div>
         <div class="row px-3">
-          <p class="f-16">
+          <p class="f-12">
             {{ business.address }}
           </p>
         </div>
@@ -55,6 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/_variables.scss';
 .banner-img {
     background-image: url('https://www.mrgoglass.com/wp-content/uploads/2019/06/buildings-city-cityscape-210557-1-1024x412.jpg');
     background-position:bottom ;
@@ -88,5 +89,24 @@ export default {
 }
 .tags {
   width: fit-content;
+}
+.page-title {
+  font-size: 3rem;
+  font-weight: 450;
+}
+.logo {
+  width: 80px;
+  height: 80px;
+}
+@media only screen and (max-width: 600px) {
+  .page-row{
+    border-top: 3px solid $dark;
+  }
+.biz-name {
+  display: none !important;
+}
+.logo-col {
+  justify-content: center !important;
+}
 }
 </style>
