@@ -6,9 +6,9 @@
       <i class="fa fa-trash pointer fa-2x" aria-hidden="true" data-toggle="modal" :data-target="'#canid'+ p.id"></i>
       <confirm-delete-modal :delete-prop="p.id" />
     </div>
-    <div class="product-component mb-3  elevation-5">
+    <div class="product-component mb-3  elevation-5 pl-3">
       <div class="row pc-row h-100">
-        <div class="col-8 col-lg-9 h-100">
+        <div class="col-8 col-lg-9 h-100 pt-3">
           <div class="row px-3 mt-1 h-25 justify-content-between">
             <p class="f-14 product-name">
               {{ p.name }}
