@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-3">
     <div class="row mb-3 px-3">
-      <div class="col dark-lines">
+      <div class="col dark-lines zoom">
         <h4>My Orders</h4>
       </div>
     </div>

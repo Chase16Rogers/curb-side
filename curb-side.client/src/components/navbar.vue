@@ -5,10 +5,10 @@
         <i class="fa mr-3 fa-shopping-cart mobile-cart-icon text-white" aria-hidden="true"></i>
       </router-link>
     </div>
-    <div class="hex-home mx-5">
+    <div class="hex-home mx-5 pt-2">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <div class="hexagon align-items-center row">
-          <h1 class="big-c col text-center">
+        <div class="hexagon align-items-center row rotate">
+          <h1 class="big-c col text-center fixed">
             C
           </h1>
         </div>
@@ -17,10 +17,10 @@
 
     <div class="navbar button-div row w-100 justify-content-between" id="navbarText">
       <div class="row lg-icon-row">
-        <router-link class="mx-3 home-link f-16" :to="{ name: 'Home' }">
+        <router-link class="mx-3 home-link f-16 zoom" :to="{ name: 'Home' }">
           Home
         </router-link>
-        <router-link class="mx-3 cart-link f-16" :to="{ name: 'Cart' }">
+        <router-link class="mx-3 cart-link f-16 zoom" :to="{ name: 'Cart' }">
           Your Cart
         </router-link>
       </div>
@@ -133,6 +133,28 @@ a:hover {
 }
 .mobile-cart-icon{
   font-size: 2.5rem;
+}
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.zoom {
+
+  transition: transform .8s; /* Animation */
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 </style>

@@ -78,4 +78,14 @@ export default {
 </script>
 
 <style>
+.zoom {
+
+  transition: transform .8s; /* Animation */
+
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
 </style>
