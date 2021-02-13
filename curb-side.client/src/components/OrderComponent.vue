@@ -34,7 +34,7 @@
             </p>
           </div>
           <div class="offset-1 col-3">
-            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" @click="getChat()" data-toggle="modal" :data-target="'#chat'+ orderProp._id"></i>
+            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" data-toggle="modal" :data-target="'#chat'+ orderProp._id"></i>
           </div>
         </div>
         <div class="row">
@@ -85,27 +85,13 @@
        aria-labelledby="exampleModalLabel"
        aria-hidden="true"
   >
-    <div class="modal-dialog modal-fullscreen-sm-down">
+    <div class="modal-dialog  modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="d-flex justify-content-end">
           <i class="fa fa-times-circle-o" @click="closeModal(orderProp._id)" aria-hidden="true"></i>
         </div>
-        <div class="modal-body">
-          <chat-component :chat-prop="state.chat" />
-        </div>
-        <div class="modal-footer">
-          <!-- <form @submit.prevent="createMessage()">
-            <input class="border-0"
-                   type="text"
-                   id="message"
-                   name="message"
-                   v-model="state.message"
-                   placeholder="Send Message..."
-            >
-            <button type="submit" class="btn btn-primary">
-              Save changes
-            </button>
-          </form> -->
+        <div class="chat-div modal-body col" v-if="orderProp.chat">
+          <chat-component :chat-prop="orderProp.chat" />
         </div>
       </div>
     </div>
@@ -117,7 +103,6 @@ import { computed, onMounted, reactive } from 'vue'
 import { chatService } from '../services/ChatService'
 import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
-import { socketService } from '../services/SocketService'
 import $ from 'jquery'
 export default {
   name: 'OrderComponent',
@@ -162,17 +147,17 @@ export default {
         return hours + ':' + minutes
       },
 
-      async getChat() {
-        try {
-          socketService.emit('join:room', props.orderProp._id)
-          await chatService.getChats(props.orderProp._id)
-        } catch (error) {
-          logger.error(error)
-        }
-      },
+      // async getChat() {
+      //   try {
+      //     socketService.emit('join:room', props.orderProp._id)
+      //     await chatService.getChats(props.orderProp._id)
+      //   } catch (error) {
+      //     logger.error(error)
+      //   }
+      // },
       closeModal(id) {
         $('#chat' + id).modal('hide')
-        socketService.emit('leave:room', id)
+        // socketService.emit('leave:room', id)
         AppState.chat = {}
       },
       async createMessage() {
@@ -250,4 +235,10 @@ p{
 .min-width{
   width: 100%;
 }
+.chat-div {
+  height: 80vh;
+  overflow: hidden;
+  display: flex !important;
+}
+
 </style>

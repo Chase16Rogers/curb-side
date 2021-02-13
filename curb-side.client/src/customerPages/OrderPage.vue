@@ -1,6 +1,6 @@
 <template>
   <div class="order-page container-fluid">
-    <div class="row">
+    <div class="row justify-content-around">
       <div class="col-lg-5 col-12">
         <div class="row page-title justify-content-center">
           <div class="col-md-12 col-6 d-flex align-items-center text-center">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="col-lg-5 right-col col-12" v-if="state.order.status === 'pending'">
-        <div class="row border my-3 " v-if="!state.order.here">
+        <div class="row my-3 " v-if="!state.order.here">
           <div class="col-12">
             <div class="row">
               <div class="col-3 d-flex align-items-center">
@@ -49,8 +49,8 @@
                 <input type="text" placeholder="model" v-model="state.arrival.model">
               </div>
             </div>
-            <div class="row">
-              <div class="col-8">
+            <div class="row justify-content-center">
+              <div class="col-8 d-flex justify-content-center">
                 <button @click="submitForm" class="btn btn-outline-secondary px-5 elevation-5">
                   I Have Arrived!
                 </button>
@@ -59,10 +59,10 @@
           </div>
         </div>
         <div class="row justify-content-center text-center" v-else>
-          <h1>{{ state.business.name }} knows you have arrived!</h1>
+          <h2>We let {{ state.business.name }} know you have arrived!</h2>
         </div>
-        <div v-if="state.chat.content" class="row border my-3 chat-row">
-          <chat-component :chat-prop="state.chat" />
+        <div v-if="state.order.chat" class="row border elevation-5 my-3 chat-row">
+          <chat-component :chat-prop="state.order.chat" />
         </div>
       </div>
     </div>
@@ -90,7 +90,6 @@ export default {
       business: computed(() => AppState.activeBusiness),
       colors: computed(() => AppState.colors),
       arrival: { carColor: '', make: '', model: '' },
-      chat: computed(() => AppState.chat),
       message: ''
     })
     onMounted(async() => {

@@ -1,10 +1,17 @@
+import { chatService } from '../services/ChatService'
 const { AppState } = require('../AppState')
 const { api } = require('./AxiosService')
-
 class OrderService {
   async getOrders(id) {
-    const res = await api.get('api/businesses/' + id + '/orders')
-    AppState.orders = res.data
+    const resOrders = await api.get('api/businesses/' + id + '/orders')
+    const orders = resOrders.data
+    for await (const order of orders) {
+      const resChat = await api.get('api/orders/' + order._id + '/chats')
+      order.chat = resChat.data[0]
+      console.log(order)
+    }
+
+    AppState.orders = resOrders.data
   }
 
   async createOrder(cart) {
@@ -36,6 +43,7 @@ class OrderService {
 
   async getOrder(id) {
     const res = await api.get('api/orders/' + id)
+    res.data.chat = await chatService.getChats(id)
     const arr = []
     res.data.contents.forEach(p => arr.push({ ...p.product, quantity: p.quantity }))
     res.data.contents = arr

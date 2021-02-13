@@ -9,7 +9,6 @@ export const AppState = reactive({
   googleMaps: [],
   orders: [],
   activeOrder: {},
-  chat: {},
   date: '',
   products: [],
   activeProduct: {},

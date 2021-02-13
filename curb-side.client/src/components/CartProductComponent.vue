@@ -11,7 +11,7 @@
               {{ p.name }}
             </p>
             <p class="f-14 product-price text-muted">
-              ${{ (p.quantity * p.price).toFixed(2) }}
+              ${{ p.price.toFixed(2) }} ea.
             </p>
           </div>
           <div class="row px-3 f-14 h-75" v-if="p.instructions">

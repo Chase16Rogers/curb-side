@@ -3,8 +3,8 @@
     <div class="row" v-if="state.empty">
       <h1>No cart to be found!</h1>
     </div>
-    <div class="row mt-5 page-row justify-content-around" v-else>
-      <div class="col-lg-5 left-col col-12 ">
+    <div class="row  mt-3 mt-2 page-row justify-content-around" v-else>
+      <div class="col-lg-5 left-col  col-12 ">
         <div class="row page-title justify-content-center">
           <div class="col-md-12 col-6 d-flex align-items-center text-center">
             <h1>
@@ -137,6 +137,7 @@ export default {
 }
 .checkout-card{
   border: none !important;
+  margin-top: 30px;
 }
 }
 .h-fc{
