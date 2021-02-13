@@ -6,7 +6,6 @@ import { api } from './AxiosService'
 
 class GoogleMapsService {
   async findNearMe(address) {
-    debugger
     const data = address.split(' ').join('+')
     const res = await api.get('api/businesses/' + data)
     AppState.businesses = res.data

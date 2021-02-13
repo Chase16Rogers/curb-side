@@ -68,7 +68,6 @@ export default {
       state,
       async search() {
         try {
-          debugger
           await googleMapsService.findNearMe(state.search)
         } catch (error) {
           logger.error(error)
