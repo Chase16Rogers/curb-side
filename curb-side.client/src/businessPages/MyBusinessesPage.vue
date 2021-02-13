@@ -30,7 +30,7 @@ export default {
     const state = reactive({
       buiz: computed(() => AppState.myBusinesses)
     })
-    onMounted(async () => {
+    onMounted(async() => {
       try {
         await businessService.getMyBusiness()
       } catch (error) {
