@@ -101,7 +101,7 @@ export default {
     background-position:center ;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 79vh;
+    // height: 79vh;
 }
 @media only screen and (max-width: 600px){
     .prod-image{

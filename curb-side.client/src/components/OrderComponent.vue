@@ -34,7 +34,8 @@
             </p>
           </div>
           <div class="offset-1 col-3">
-            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" data-toggle="modal" :data-target="'#chat'+ orderProp._id"></i>
+            <i class="fa fa-comment fa-2x pointer mb-1 ml-1 mr-3 align-self-center" aria-hidden="true" data-toggle="modal" @click="formatModal" :data-target="'#chat'+ orderProp._id"></i>
+            <div :id="'id-'+orderProp._id" class="ping" :class="{'vis': orderProp.unreads}"></div>
           </div>
         </div>
         <div class="row">
@@ -60,8 +61,6 @@
           </div>
         </div>
       </div>
-
-      <!-- trigger modal -->
     </div>
     <div class="col-6" v-else>
       <p class="text-primary" v-if="orderProp.status === 'completed'">
@@ -145,6 +144,17 @@ export default {
     })
     return {
       state,
+      formatModal() {
+        const order = AppState.orders.find(o => o._id === props.orderProp._id)
+        console.log(order)
+        order.unreads = false
+        setTimeout(() => {
+          console.log('#id-' + props.orderProp.chat._id)
+          const height = $('#id-' + props.orderProp.chat._id)[0].scrollHeight
+          console.log(height)
+          $('#id-' + props.orderProp.chat._id).animate({ scrollTop: height }, 200, 'swing')
+        }, 300)
+      },
       time() {
         const date = new Date(props.orderProp.createdAt)
         let hours = date.getHours()
@@ -227,7 +237,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
+@import '../assets/scss/_variables.scss';
 p{
   margin-bottom: 0;
 }
@@ -248,5 +259,16 @@ p{
   overflow: hidden;
   display: flex !important;
 }
-
+.ping {
+  border-radius: 50%;
+  background-color: $danger ;
+  height: 14px;
+  width: 14px;
+  border: 1px solid white;
+  transform: translateX(20px) translateY(-35px);
+  visibility: hidden;
+}
+.vis {
+  visibility:visible;
+}
 </style>

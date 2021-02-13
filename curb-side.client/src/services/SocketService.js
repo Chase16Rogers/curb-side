@@ -36,13 +36,12 @@ class SocketService extends SocketHandler {
 
   updateChat(payload) {
     console.log('chat message', payload)
-    // AppState.orders.find(o => {
-    //   console.log(o, payload.orderId)
-    //   return o._id === payload.orderId
-    // }).chat = payload
 
     if (AppState.orders.length > 0) {
-      AppState.orders.find(o => o.id === payload.orderId).chat = payload
+      const o = AppState.orders.find(o => o.id === payload.orderId)
+      o.chat = payload
+      o.unreads = true
+      console.log(o)
     } else {
       AppState.activeOrder.chat = payload
     }
