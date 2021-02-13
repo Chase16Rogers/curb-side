@@ -14,6 +14,18 @@ class OrderService {
     AppState.orders = resOrders.data
   }
 
+  async getMyOrders(id) {
+    const resOrders = await api.get('account/' + id + '/orders')
+    // const orders = resOrders.data
+    // for await (const order of orders) {
+    //   const resChat = await api.get('api/orders/' + order._id + '/chats')
+    //   order.chat = resChat.data[0]
+    //   console.log(order)
+    // }
+
+    AppState.orders = resOrders.data
+  }
+
   async createOrder(cart) {
     const order = { businessId: cart.businessId, contents: [] }
     let subTotal = 0

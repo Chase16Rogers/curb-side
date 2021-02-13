@@ -69,6 +69,12 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/account/:id/orders',
+    name: 'MyOrdersPage',
+    component: loadPage('customerPages', 'MyOrdersPage'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/productpage/:id',
     name: 'ProductPage',
     component: loadPage('customerPages', 'ProductPage')

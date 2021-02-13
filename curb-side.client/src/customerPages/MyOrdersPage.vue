@@ -2,10 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h3>Archived Order</h3>
+        <h3>My Orders</h3>
       </div>
     </div>
     <div class="row">
+      <div class="col">
+        <h6>Coming Soon!</h6>
+      </div>
+    </div>
+    <div class="row" v-if="false">
       <div class="col">
         <order-component v-for="order in sortDates()" :key="order.id" :order-prop="order" :archived="true" />
       </div>
@@ -30,7 +35,7 @@ export default {
     onMounted(async() => {
       // AppState.date = ''
       try {
-        await orderService.getOrders(route.params.id)
+        await orderService.getMyOrders(route.params.id)
         AppState.orders = AppState.orders.filter(o => o.status !== 'pending')
       } catch (error) {
         logger.error(error)
