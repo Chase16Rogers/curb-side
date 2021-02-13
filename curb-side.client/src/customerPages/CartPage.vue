@@ -4,7 +4,7 @@
       <h1>No cart to be found!</h1>
     </div>
     <div class="row  mt-3 mt-2 page-row justify-content-around" v-else>
-      <div class="col-lg-5 left-col  col-12 ">
+      <div class="col-lg-5 left-col bg-white elevation-3 col-12 ">
         <div class="row page-title justify-content-center">
           <div class="col-md-12 col-6 d-flex align-items-center text-center">
             <h1>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-5 checkout-card elevation-5 col-12">
+      <div class="col-lg-5  bg-white checkout-card elevation-3 col-12">
         <div class="row checkout-header bg-info justify-content-center align-items-center">
           <h1>Checkout</h1>
         </div>
@@ -148,7 +148,6 @@ export default {
   height: 15%;
 }
 .checkout-card {
-  border: 3px solid $dark;
   height: 70vh;
 }
 .checkout-contents{
@@ -164,13 +163,17 @@ export default {
 .cart-col{
   overflow-y: auto;
   overflow-x: hidden;
-  height: 35vh;
+  height: 40vh;
 }
 .left-row {
   overflow: hidden;
-  height: 35vh;
+  height: 40vh;
 }
 .cart-page {
   max-height: 70vh !important;
+}
+.left-col{
+  height: fit-content;
+ padding-bottom: 50px;
 }
 </style>

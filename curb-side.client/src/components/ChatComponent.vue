@@ -1,5 +1,5 @@
 <template>
-  <div class="chat col-12">
+  <div class="chat col-12 bg-white">
     <div class="row bg-primary">
       <div class="col-12">
         <h3>{{ state.business.name }}</h3>

@@ -1,30 +1,29 @@
 <template>
   <div class="order-page container-fluid">
     <div class="row justify-content-around">
-      <div class="col-lg-5 col-12">
+      <div class="col-lg-5 left-col mt-5 bg-white elevation-3 col-12 ">
         <div class="row page-title justify-content-center">
           <div class="col-md-12 col-6 d-flex align-items-center text-center">
             <h1>
-              Your Cart
+              Pending Order
             </h1>
           </div>
-          <div class="col-6 logo-col my-5 d-flex justify-content-end ">
+
+          <div class="col-6 logo-col h-50 my-2 d-flex justify-content-end ">
             <img class="logo" :src="state.business.logo" alt="logo">
           </div>
-          <div class="col-5 biz-name d-flex align-items-center">
+          <div class="col-2 biz-name d-flex align-items-center">
             <h4>{{ state.business.name }}</h4>
           </div>
         </div>
-
-        <div class="row justify-content-around cart-row" v-if="state.order.contents">
-          <div class="col-12">
+        <div class="row justify-content-around left-row ">
+          <div class="col-12 cart-col" v-if="state.order.contents">
             <cart-product-component v-for="p in state.order.contents" :key="p.id" :p="p" :change-qty="false" />
           </div>
         </div>
       </div>
-
       <div class="col-lg-5 right-col col-12" v-if="state.order.status === 'pending'">
-        <div class="row my-3 " v-if="!state.order.here">
+        <div class="row my-3 py-4 bg-white elevation-3 " v-if="!state.order.here">
           <div class="col-12">
             <div class="row">
               <div class="col-3 d-flex align-items-center">
@@ -43,15 +42,15 @@
                 </p>
               </div>
               <div class="col-4">
-                <input type="text" placeholder="make" v-model="state.arrival.make">
+                <input class="border-0" type="text" placeholder="make" v-model="state.arrival.make">
               </div>
               <div class="col-4">
-                <input type="text" placeholder="model" v-model="state.arrival.model">
+                <input class="border-0" type="text" placeholder="model" v-model="state.arrival.model">
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="col-8 d-flex justify-content-center">
-                <button @click="submitForm" class="btn btn-outline-secondary px-5 elevation-5">
+                <button @click="submitForm" class="btn btn-outline-secondary arrival-btn px-5 elevation-5">
                   I Have Arrived!
                 </button>
               </div>
@@ -159,5 +158,49 @@ input{
   display: flex;
   flex-direction: column;
 }
+.checkout-card{
+  border: none !important;
+  margin-top: 30px;
+}
 
+.h-fc{
+  height: fit-content ;
+}
+
+.checkout-header {
+  height: 15%;
+}
+.checkout-card {
+  height: 70vh;
+}
+.checkout-contents{
+  height: 75% !important;
+  overflow-y:auto;
+  margin-bottom: 150px;
+}
+.checkout-btn-row{
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+}
+.cart-col{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 40vh;
+}
+.left-row {
+  overflow: hidden;
+  height: 40vh;
+}
+.cart-page {
+  max-height: 70vh !important;
+}
+.left-col{
+  height: fit-content;
+ padding-bottom: 50px;
+}
+.arrival-btn {
+  border-width: 3px;
+  border-radius: 20px;
+}
 </style>

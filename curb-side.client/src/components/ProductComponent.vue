@@ -1,5 +1,5 @@
 <template>
-  <div class="product-component my-3 col-md-5 col-sm-12 elevation-5">
+  <div class="product-component bg-white hover-topleft round my-3 col-md-5 col-sm-12 elevation-5">
     <div class="row pc-row h-100 pointer" @click="productPage">
       <div class="col-8 col-lg-9 h-100">
         <div class="row px-3 mt-1 mb-3 h-25 justify-content-between">
@@ -14,7 +14,7 @@
           <p> {{ p.description.length > 100 ? p.description.slice(0,100)+'...' : p.description }}</p>
         </div>
       </div>
-      <div class="col-4 col-lg-3 product-img" :style="`background-image: url(${p.img})`">
+      <div class="col-4 col-lg-3 product-img round square-left" :style="`background-image: url(${p.img})`">
       </div>
     </div>
   </div>

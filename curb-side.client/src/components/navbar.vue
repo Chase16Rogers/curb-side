@@ -25,23 +25,34 @@
         </router-link>
       </div>
 
-      <span class="navbar-text ">
-        <button
-          class="btn btn-outline-light text-uppercase"
-          @click="login"
-          v-if="!user.isAuthenticated"
-        >
-          Login
-        </button>
-        <router-link v-else :to="{ name: 'Account' }">
-          <img
+      <span class="navbar-text d-flex align-item-center ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col d-flex justify-content-start align-items-center">
+              <button
+                class="btn btn-outline-light text-uppercase"
+                @click="login"
+                v-if="!user.isAuthenticated"
+              >
+                Login
+              </button>
+              <router-link v-else :to="{ name: 'Account' }">
+                <i class="fa hover-topleft fa-user-circle d-flex fa-2x align-self-center" aria-hidden="true"></i>
+                <!-- <img
             :src="user.picture"
             alt="user photo"
             height="40"
             class="rounded ml-3 hover-topleft"
-          />
-        </router-link>
-        <span class="account-name mx-3">{{ user.name }}</span>
+          /> -->
+
+              </router-link></div>
+            <div class="col-md ml-0 col-sm-0 d-flex align-items-center">
+              <router-link :to="{ name: 'Account' }">
+                <span class="account-name ml-0 mx-3"><p class="hover-topleft email-text">{{ user.name }}</p></span>
+              </router-link></div>
+          </div>
+        </div>
+
       </span>
     </div>
   </nav>
@@ -168,5 +179,7 @@ a:hover {
 .zoom:hover {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-
+.email-text{
+  font-size: 1em;
+}
 </style>
