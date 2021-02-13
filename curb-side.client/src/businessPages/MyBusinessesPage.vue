@@ -28,7 +28,7 @@ export default {
   components: { BusinessComponent },
   setup() {
     const state = reactive({
-      buiz: computed(() => AppState.myBusinesses)
+      buiz: computed(() => AppState.businesses)
     })
     onMounted(async() => {
       try {

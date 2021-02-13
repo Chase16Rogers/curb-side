@@ -4,7 +4,6 @@ export const AppState = reactive({
   user: {},
   account: {},
   businesses: [],
-  myBusinesses: [],
   activeBusiness: {},
   googleMaps: [],
   orders: [],

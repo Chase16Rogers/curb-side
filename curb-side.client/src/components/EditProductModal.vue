@@ -1,45 +1,54 @@
 <template>
   <!-- Modal -->
   <div class="modal fade" :id="'id'+ editProductProp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <form class="form-inline" @submit.prevent="editProduct">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">
               Edit this product!
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <input
-              class="form-control border-0 mb-2"
-              type="text"
-              name="name"
-              maxlength="20"
-              placeholder="Product Name..."
-              v-model="state.product.name"
-            />
-            <input
-              class="form-control border-0 mb-2"
-              type="number"
-              name="name"
-              placeholder="Price"
-              v-model="state.product.price"
-            />
-            <input
-              class="form-control border-0 mb-2"
-              type="text"
-              name="name"
-              placeholder="Description..."
-              v-model="state.product.description"
-            />
-            <input
-              class="form-control border-0 mb-2"
-              type="text"
-              name="name"
-              placeholder="Img URL... (optional)"
-              v-model="state.product.img"
-            />
+          <div class="modal-body container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <input
+                  class="form-control border-0 mb-2"
+                  type="text"
+                  name="name"
+                  maxlength="20"
+                  placeholder="Product Name..."
+                  v-model="state.product.name"
+                />
+              </div>
+              <div class="col-12">
+                <input
+                  class="form-control border-0 mb-2"
+                  type="number"
+                  name="name"
+                  placeholder="Price"
+                  v-model="state.product.price"
+                />
+              </div>
+              <div class="col-12">
+                <input
+                  class="form-control border-0 mb-2"
+                  type="text"
+                  name="name"
+                  placeholder="Description..."
+                  v-model="state.product.description"
+                />
+              </div>
+              <div class="col-12">
+                <input
+                  class="form-control border-0 mb-2"
+                  type="text"
+                  name="name"
+                  placeholder="Img URL... (optional)"
+                  v-model="state.product.img"
+                />
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -94,6 +103,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+input.border-0{
+  width: 100%;
+}
 </style>

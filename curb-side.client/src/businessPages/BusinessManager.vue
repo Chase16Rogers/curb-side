@@ -9,23 +9,23 @@
       <div class="col-3">
         <img class="img-fluid" :src="state.business.logo" alt="Oops">
       </div>
-      <div class="col-9 d-flex align-items-center">
+      <div class="col-9 pointer d-flex align-items-center">
         <p class="mb-0">
           {{ state.business.name }}
         </p>
       </div>
     </div>
     <div class="row mb-3 px-3">
-      <div class="col dark-lines" @click="getOrders">
+      <div class="col pointer dark-lines" @click="getOrders">
         <h4>Active Orders</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3" @click="routeCatalogue">
+    <div class="row mb-3 pointer px-3" @click="routeCatalogue">
       <div class="col dark-lines">
         <h4>View Catalogue</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row mb-3 pointer px-3">
       <div class="col dark-lines" @click="archived">
         <h4>View Archived Orders</h4>
       </div>

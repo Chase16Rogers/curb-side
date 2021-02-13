@@ -1,6 +1,7 @@
 <template>
   <div
     class="row py-3 pl-3 lines justify-content-between pointer"
+    :class="state.color"
     @click="businessManager()"
   >
     <div class="col-2 p-0">
@@ -24,8 +25,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 export default {
   name: 'BusinessComponent',
   props: {
@@ -41,7 +43,15 @@ export default {
   setup(props) {
     const router = useRouter()
     const state = reactive({
-
+      color: ''
+    })
+    onMounted(() => {
+      const index = AppState.businesses.findIndex(o => o._id === props.buizProp._id)
+      if (index % 2 === 0) {
+        state.color = 'white'
+      } else {
+        state.color = 'green'
+      }
     })
     return {
       state,
