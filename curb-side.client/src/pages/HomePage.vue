@@ -34,7 +34,7 @@
               @click="search"
               class="btn btn-primary px-4 shop-button elevation-4"
             >
-              Shop
+              Search
             </button>
           </div>
         </div>

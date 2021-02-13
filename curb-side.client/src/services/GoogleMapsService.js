@@ -5,9 +5,9 @@ import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class GoogleMapsService {
-  async findNearMe(address) {
+  async findNearMe(data) {
     debugger
-    address = address.split(' ').join('+')
+    const address = data.address.split(' ').join('+')
     const res = await api.get('api/businesses/' + address)
     AppState.businesses = res.data
   }
