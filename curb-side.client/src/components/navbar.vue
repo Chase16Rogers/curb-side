@@ -17,10 +17,10 @@
 
     <div class="navbar button-div row w-100 justify-content-between" id="navbarText">
       <div class="row lg-icon-row">
-        <router-link class="mx-3 home-link f-16 zoom" :to="{ name: 'Home' }">
+        <router-link class="mx-3 home-link f-16 hover-topleft" :to="{ name: 'Home' }">
           Home
         </router-link>
-        <router-link class="mx-3 cart-link f-16 zoom" :to="{ name: 'Cart' }">
+        <router-link class="mx-3 cart-link f-16 hover-topleft" :to="{ name: 'Cart' }">
           Your Cart
         </router-link>
       </div>
@@ -38,7 +38,7 @@
             :src="user.picture"
             alt="user photo"
             height="40"
-            class="rounded ml-3"
+            class="rounded ml-3 hover-topleft"
           />
         </router-link>
         <span class="account-name mx-3">{{ user.name }}</span>

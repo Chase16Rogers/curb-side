@@ -23,7 +23,7 @@
           <div class=" col-xs-10 col-md-6">
             <input
               v-model="state.search"
-              class="elevation-4 zoom"
+              class="elevation-4 hover-topleft"
               placeholder="Enter Address"
               type="text"
             />
@@ -32,7 +32,7 @@
             <button
               type="button"
               @click="search"
-              class="btn btn-primary px-4 shop-button elevation-4 zoom"
+              class="btn btn-primary px-4 shop-button elevation-4 hover-topleft"
             >
               Search
             </button>
@@ -43,7 +43,7 @@
 
     <div class="row h-50 bottom-row align-items-end justify-content-center">
       <div class="col-xs-4 mb-3 col-md-3 offset-xs-3 offset-md-9">
-        <button class="btn btn-outline-dark elevation-3 register-btn zoom" @click="createBusiness()">
+        <button class="btn btn-outline-dark elevation-3 register-btn hover-topleft" @click="createBusiness()">
           Register your business with us!
         </button>
       </div>
@@ -135,13 +135,12 @@ form {
   font-weight: 600;
 }
 .zoom {
-
-  transition: transform .8s; /* Animation */
-
+  transition: transform .35s; /* Animation */
   margin: 0 auto;
 }
 
 .zoom:hover {
-  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.08); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
 </style>

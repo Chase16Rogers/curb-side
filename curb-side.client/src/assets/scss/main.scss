@@ -137,3 +137,17 @@ input.border-0{
 .font-smaller{
   font-size: 2px;
 }
+.hover-topleft:hover {
+  transition: 250ms;
+  transform: translateX(-8px) translateY(-8px);
+}
+.hover-topleft {
+  transition: transform 250ms !important;
+}
+.hover-bottomright:hover {
+  transition: 250ms;
+  transform: translateX(8px) translateY(8px);
+}
+.hover-bottomright {
+  transition: transform 250ms !important;
+}
