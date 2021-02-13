@@ -5,7 +5,7 @@ class BusinessService {
   async getMyBusiness(id) {
     id = AppState.account.id
     const res = await api.get('account/' + id + '/businesses')
-    AppState.myBusinesses = res.data
+    AppState.businesses = res.data
   }
 
   async getOneBusiness(id) {

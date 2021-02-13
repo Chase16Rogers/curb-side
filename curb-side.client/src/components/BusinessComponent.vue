@@ -1,7 +1,13 @@
 <template>
   <div
+<<<<<<< HEAD
     class="row my-4 elevation-3 round hover-el-5 business-component bg-white hover-topleft justify-content-between pointer"
     @click="pushTo()"
+=======
+    class="row py-3 pl-3 lines justify-content-between pointer"
+    :class="state.color"
+    @click="businessManager()"
+>>>>>>> d440d577e6ad0dee89c4c1d59dad38c8fd632bb2
   >
     <div class="col-2 p-0">
       <img class="img-fluid square-right round" :src="buizProp.logo" />
@@ -24,8 +30,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 export default {
   name: 'BusinessComponent',
   props: {
@@ -41,7 +48,15 @@ export default {
   setup(props) {
     const router = useRouter()
     const state = reactive({
-
+      color: ''
+    })
+    onMounted(() => {
+      const index = AppState.businesses.findIndex(o => o._id === props.buizProp._id)
+      if (index % 2 === 0) {
+        state.color = 'white'
+      } else {
+        state.color = 'green'
+      }
     })
     return {
       state,

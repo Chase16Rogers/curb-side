@@ -1,26 +1,28 @@
 <template>
-  <div class="col-12 d-flex justify-content-end mb-1">
-    <i class="fa fa-pencil fa-2x mr-2" aria-hidden="true" data-toggle="modal" :data-target="'#id'+ p.id"></i>
-    <edit-product-modal :edit-product-prop="p.id" />
-    <i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" :data-target="'#canid'+ p.id"></i>
-    <confirm-delete-modal :delete-prop="p.id" />
-  </div>
-  <div class="product-component mb-3 col-md-5 col-sm-12 elevation-5">
-    <div class="row pc-row h-100 pointer">
-      <div class="col-8 col-lg-9 h-100">
-        <div class="row px-3 mt-1 h-25 justify-content-between">
-          <p class="f-14 product-name">
-            {{ p.name }}
-          </p>
-          <p class="f-14 product-price">
-            ${{ p.price.toFixed(2) }}
-          </p>
+  <div class="col-md-5 col-sm-12">
+    <div class=" d-flex justify-content-end mb-1">
+      <i class="fa fa-pencil pointer fa-2x mr-2" aria-hidden="true" data-toggle="modal" :data-target="'#id'+ p.id"></i>
+      <edit-product-modal :edit-product-prop="p.id" />
+      <i class="fa fa-trash pointer fa-2x" aria-hidden="true" data-toggle="modal" :data-target="'#canid'+ p.id"></i>
+      <confirm-delete-modal :delete-prop="p.id" />
+    </div>
+    <div class="product-component mb-3  elevation-5">
+      <div class="row pc-row h-100">
+        <div class="col-8 col-lg-9 h-100">
+          <div class="row px-3 mt-1 h-25 justify-content-between">
+            <p class="f-14 product-name">
+              {{ p.name }}
+            </p>
+            <p class="f-14 product-price">
+              ${{ p.price.toFixed(2) }}
+            </p>
+          </div>
+          <div class="row px-3 f-14 h-75">
+            <p>{{ p.description }}</p>
+          </div>
         </div>
-        <div class="row px-3 f-14 h-75">
-          <p>{{ p.description }}</p>
+        <div class="col-4 col-lg-3 product-img" :style="`background-image: url(${p.img})`">
         </div>
-      </div>
-      <div class="col-4 col-lg-3 product-img" :style="`background-image: url(${p.img})`">
       </div>
     </div>
   </div>
