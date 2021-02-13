@@ -34,7 +34,7 @@
               @click="search"
               class="btn btn-primary px-4 shop-button elevation-4"
             >
-              Shop
+              Search
             </button>
           </div>
         </div>
@@ -68,7 +68,6 @@ export default {
       state,
       async search() {
         try {
-          debugger
           await googleMapsService.findNearMe(state.search)
         } catch (error) {
           logger.error(error)

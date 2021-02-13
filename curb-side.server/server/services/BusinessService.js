@@ -10,8 +10,8 @@ class BusinessService {
     }
     return res
   }
-  async getAllNear(address) {
-    const lats = await latApi.get('json?address=' + address.address + '&key=AIzaSyDoW1Uw5M4sp85tE_yn6p0X5raQ8D-VWZM')
+  async getAllNear(data) {
+    const lats = await latApi.get('json?address=' + data.address + '&key=AIzaSyDoW1Uw5M4sp85tE_yn6p0X5raQ8D-VWZM')
     let coords = [lats.data.results[0].geometry.location.lng, lats.data.results[0].geometry.location.lat]
     // let query = {}
     // query{center: coords, maxDistance:10000, spherical: true}
