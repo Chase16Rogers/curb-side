@@ -1,10 +1,10 @@
 <template>
-  <div class="row lines mt-3 pb-2" v-if="state.showDate && !state.activeArchive">
+  <div :class="'row lines mt-3 pb-2'" v-if="state.showDate && !state.activeArchive">
     <div class="col">
       <p>{{ getDate() }}</p>
     </div>
   </div>
-  <div class="row lines p-3">
+  <div class="row lines p-3" :class="state.color">
     <div class="col-6 p-0">
       <div class="d-flex">
         <p class="mr-1">
@@ -121,9 +121,17 @@ export default {
       message: '',
       orderDate: computed(() => AppState.date),
       showDate: false,
-      activeArchive: true
+      activeArchive: true,
+      color: ''
     })
     onMounted(() => {
+      const index = AppState.orders.findIndex(o => o._id === props.orderProp._id)
+      if (index % 2 === 0) {
+        state.color = 'white'
+      } else {
+        state.color = 'green'
+      }
+
       if (props.orderProp.date === state.orderDate) {
         state.showDate = false
       } else {

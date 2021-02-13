@@ -1,31 +1,31 @@
 <template>
-  <div class="container-fluid p-3">
-    <div class="row mb-3 px-3">
+  <div class="container p-3">
+    <div class="row pointer mb-3 px-3" @click="myOrders()">
       <div class="col dark-lines zoom">
         <h4>My Orders</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row pointer mb-3 px-3">
       <div class="col dark-lines">
         <h4>Account Info</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row pointer mb-3 px-3">
       <div class="col dark-lines">
         <h4>Favorite Shops</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row pointer mb-3 px-3">
       <div class="col dark-lines">
         <h4>Contact Us</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3">
+    <div class="row pointer mb-3 px-3">
       <div class="col dark-lines">
         <h4>Help</h4>
       </div>
     </div>
-    <div class="row mb-3 px-3" @click="createBusiness()">
+    <div class="row pointer mb-3 px-3" @click="createBusiness()">
       <div class="col dark-lines">
         <h4>I want to register a business</h4>
       </div>
@@ -59,6 +59,9 @@ export default {
       },
       createBusiness() {
         router.push({ name: 'CreateBusiness' })
+      },
+      myOrders() {
+        router.push({ name: 'MyOrdersPage', params: { id: AppState.account._id } })
       },
       async logout() {
         await AuthService.logout({ returnTo: window.location.origin })

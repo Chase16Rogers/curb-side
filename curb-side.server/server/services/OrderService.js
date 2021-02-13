@@ -4,7 +4,7 @@ import socketService from "./SocketService"
 
 class OrderService {
   async getMyOrders(query) {
-    const res = await dbContext.Orders.find(query).populate('contents.productId')
+    const res = await dbContext.Orders.find(query).populate('contents.product creator')
     if (!res) {
       throw new BadRequest('ERROR 403 THE ID DOES NOT HAVE ANY ORDERS')
     }

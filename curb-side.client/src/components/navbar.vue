@@ -8,7 +8,7 @@
     <div class="hex-home mx-5 pt-2">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="hexagon align-items-center row rotate">
-          <h1 class="big-c col text-center fixed">
+          <h1 class="big-c col text-center fixed anti-rotate">
             C
           </h1>
         </div>
@@ -135,6 +135,18 @@ a:hover {
   font-size: 2.5rem;
 }
 .rotate {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.anti-rotate {
   animation: rotation 8s infinite linear;
 }
 

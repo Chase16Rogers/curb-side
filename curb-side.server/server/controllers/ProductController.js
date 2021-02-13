@@ -1,6 +1,6 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { productService } from '../services/ProductService'
+import { productService } from '../models/ProductService'
 
 export class ProductController extends BaseController {
   constructor() {
