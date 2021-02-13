@@ -2,7 +2,7 @@
   <div class="container-fluid p-3">
     <form class="form-inline" @submit.prevent="createBusiness">
       <div class="row">
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
           <div class="container-fluid">
             <div class="row">
               <div class="col-12 d-flex justify-content-center">
@@ -62,7 +62,8 @@
             </div>
           </div>
         </div>
-        <div class="col-6 trust-us">
+        <div class="col-md-6 d-sm-none d-md-block ">
+          <div class="trust-us"></div>
         </div>
       </div>
     </form>
@@ -108,18 +109,19 @@ export default {
 .zoom:hover {
   transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
  input.border-0{
   width: 80%;
 }
-}
-.trust-us{
-  background-image: url('https://cdn.pixabay.com/photo/2013/08/28/11/47/leaf-176722__340.jpg');
-  width: 50vw;
-  right: 0;
-  bottom: 72px;
-  top: 114px;
-  position: fixed
-}
+  .trust-us{
+    background-image: url('https://cdn.pixabay.com/photo/2013/08/28/11/47/leaf-176722__340.jpg');
+    width: 50vw;
+    right: 0;
+    bottom: 72px;
+    top: 118.892px;
+    position: fixed
+  }
+
+  }
 
 </style>
