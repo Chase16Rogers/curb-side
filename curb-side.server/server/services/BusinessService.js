@@ -1,7 +1,7 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 import { latApi } from "./AxiosService"
-
+const GoogleKey = process.env.Google_Key
 class BusinessService {
   async getAll(query) {
     const res = await dbContext.Businesses.find(query)
@@ -10,8 +10,8 @@ class BusinessService {
     }
     return res
   }
-  async getAllNear(address) {
-    const lats = await latApi.get('json?address=' + address.address + '&key=AIzaSyDoW1Uw5M4sp85tE_yn6p0X5raQ8D-VWZM')
+  async getAllNear(data) {
+    const lats = await latApi.get('json?address=' + data.address + '&key=' + GoogleKey) 
     let coords = [lats.data.results[0].geometry.location.lng, lats.data.results[0].geometry.location.lat]
     // let query = {}
     // query{center: coords, maxDistance:10000, spherical: true}
@@ -43,7 +43,7 @@ class BusinessService {
   async create(data) {
     let address = data.address
     address = address.split(' ').join('+')
-    const lats = await latApi.get('json?address=' + address + '&key=AIzaSyDoW1Uw5M4sp85tE_yn6p0X5raQ8D-VWZM')
+    const lats = await latApi.get('json?address=' + address + '&key='+ GoogleKey)
     let coords = [lats.data.results[0].geometry.location.lng, lats.data.results[0].geometry.location.lat]
     data.location = {}
     data.location.coordinates = coords

@@ -1,17 +1,16 @@
 <template>
-  <div class="col-12 my-2" :class="toggle(messageProp.message.senderId)">
-    <!-- <div class="col-2 d-flex align-items-center" v-if="!state.right">
-      <img class="img-fluid" :src="state.business.logo" alt="">
-    </div> -->
-    <div class="w-fc msg px-3 py-2" :class="[ state.right ? 'bg-primary text-white': 'bg-info-light text-dark']">
-      <div class="msg-txt">
-        {{ messageProp.message.message }}
+  <transition name="fade">
+    <div class="col-12 my-2 d-flex h-fc" :class="toggle(messageProp.message.senderId)">
+      <div class="w-fc msg px-3 py-2" :class="[ state.right ? 'bg-primary text-white': 'bg-info-light text-dark']">
+        <div class="msg-txt">
+          {{ messageProp.message.message }}
+        </div>
+      </div>
+      <div class="col-2 d-flex align-items-center" v-if="state.left">
+        <img class="img-fluid" :src="state.business.logo" alt="">
       </div>
     </div>
-    <div class="col-2 d-flex align-items-center" v-if="state.left">
-      <img class="img-fluid" :src="state.business.logo" alt="">
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -55,7 +54,11 @@ export default {
 .w-fc {
   width: fit-content !important;
 }
+.h-fc {
+  height: fit-content;
+}
 .msg-txt {
   font-size: 1.2rem;
 }
+
 </style>

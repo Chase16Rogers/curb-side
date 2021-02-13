@@ -8,7 +8,7 @@ export class BusinessController extends BaseController {
   constructor() {
     super('api/businesses')
     this.router
-      .get('/:address', this.getAll)
+      .get('/find/:address', this.getAll)
       .get('/:id', this.getOne)
       .get('/:id/products', this.getProducts)
       .use(Auth0Provider.getAuthorizedUserInfo)
