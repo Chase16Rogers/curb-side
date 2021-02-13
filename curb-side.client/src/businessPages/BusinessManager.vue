@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row my-2 mb-3">
       <div class="col">
         <h3>Business Manager</h3>
