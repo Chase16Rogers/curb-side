@@ -1,13 +1,7 @@
 <template>
   <div
-<<<<<<< HEAD
     class="row my-4 elevation-3 round hover-el-5 business-component bg-white hover-topleft justify-content-between pointer"
     @click="pushTo()"
-=======
-    class="row py-3 pl-3 lines justify-content-between pointer"
-    :class="state.color"
-    @click="businessManager()"
->>>>>>> c4bea3c9f35c5eacc44b0d6fdd0466c7df634d00
   >
     <div class="col-2 p-0">
       <img class="img-fluid square-right round" :src="buizProp.logo" />
