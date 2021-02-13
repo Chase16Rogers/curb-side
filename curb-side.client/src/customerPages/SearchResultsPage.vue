@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-xs-10 lines col-md-8">
-        <h3>Search Results</h3>
+    <div class="row pt-5 justify-content-center">
+      <div class="col-xs-10 col-md-8">
+        <h5>Search Results for Your Location</h5>
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-xs-10 col-md-8">
+      <div class="col-xs-10 col-md-7">
         <business-component
           v-for="buiz in state.buiz"
           :key="buiz.id"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { reactive, computed, onMounted } from 'vue'
+import { reactive, computed } from 'vue'
 import { AppState } from '../AppState'
 // import { googleMapsService } from '../services/GoogleMapsService'
 // import { useRoute } from 'vue-router'
@@ -28,16 +28,7 @@ export default {
     const state = reactive({
       buiz: computed(() => AppState.businesses)
     })
-    // const route = useRoute()
-    // const query = route.params.query
-    onMounted(async() => {
-      // NOTE Google data will eventually be here
-      try {
-        // await googleMapsService.findByDistance(route.params.search)
-      } catch (error) {
-        console.log(error)
-      }
-    })
+
     return {
       state
     }

@@ -7,24 +7,19 @@
     <div class="row logo-row justify-content-end">
       <img class="logo mx-4" :src="business.logo" alt="">
     </div>
-    <div class="row justify-content-center">
-      <div class="col-sm-10 gutter-col offset-1 mr-4">
-        <div class="row">
+    <div class="row  header-row">
+      <div class="col-6 col-sm-4 round square-top bg-white elevation-5 gutter-col offset-2 ">
+        <div class="row px-3">
           <p class="business-name f-18">
             {{ business.name }}
           </p>
         </div>
-        <div class="row tags">
+        <div class="row tags px-3">
           <tag-component v-for="tag in business.tags" :key="tag.name" :tag="tag" />
         </div>
-        <div class="row">
+        <div class="row px-3">
           <p class="f-16">
             {{ business.address }}
-          </p>
-        </div>
-        <div class="row">
-          <p class="f-16">
-            placeholder
           </p>
         </div>
       </div>
@@ -74,16 +69,16 @@ export default {
     transform: translateY(-70px);
 }
 @media only screen and (max-width: 600px) {
-.logo-row {
-    justify-content: start !important;
-    margin-top: 15px;
-}
+
 .gutter-col {
     margin-right: 25px;
     margin-left: 25px;
-    margin-top: 15px;
 }
 
+}
+.header-row {
+  transform: translateY(-60px);
+  justify-content: start;
 }
 .logo-row {
     height: 60px;

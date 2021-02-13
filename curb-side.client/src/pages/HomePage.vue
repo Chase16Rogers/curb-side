@@ -117,6 +117,9 @@ export default {
     display: flex !important;
     height: 100px;
   }
+  .shop-button {
+    margin-top: 10px;
+  }
 }
 input {
   border-radius: 8px;
