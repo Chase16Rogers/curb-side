@@ -20,8 +20,8 @@ export default {
 <style scoped lang="scss">
     @import "../assets/scss/_variables.scss";
     .tag {
-    background: $info;
-    border-radius: 20px;
+    background: $info-light;
+    border-radius: 5px;
     width: fit-content;
     }
     p {
