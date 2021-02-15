@@ -1,26 +1,18 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { orderService } from '../services/OrderService'
+import { chatService } from '../services/ChatService'
 
 export class OrderController extends BaseController {
   constructor() {
     super('api/orders')
     this.router
-      .get('', this.getAll)
-      .get('/:id', this.getOne)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:id', this.getOne)
+      .get('/:id/chats', this.getChats)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
-  }
-
-  async getAll(req, res, next) {
-    try {
-      const data = await orderService.getAll(req)
-      res.send(data)
-    } catch (error) {
-      next(error)
-    }
   }
 
   async getOne(req, res, next) {
@@ -32,12 +24,23 @@ export class OrderController extends BaseController {
     }
   }
 
+  async getChats(req, res, next) {
+    try {
+      res.send(await chatService.getAll({ orderId: req.params.id }))
+    } catch (error) {
+      next(error)
+    }
+  }
+
   async create(req, res, next) {
     try {
       const val = req.body
-      val.creatorId = req.userInfo.id
+      //REVIEW CreatorID seems unnecessary
       val.customerId = req.userInfo.id
+      val.creatorId = req.userInfo.id
+      // NOTE Verify that an order's subtotal is accurate
       const data = await orderService.create(val)
+      await chatService.create({ customerId: req.userInfo.id, businessId: req.body.businessId, orderId: data._id })
       res.send(data)
     } catch (error) {
       next(error)
@@ -46,6 +49,7 @@ export class OrderController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      //REVIEW Edit should be more limited in scope
       const val = req.body
       val.creatorId = req.userInfo.id
       const query = { _id: req.params.id, creatorId: req.userInfo.id }

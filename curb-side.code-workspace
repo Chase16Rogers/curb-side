@@ -1,10 +1,11 @@
-
 {
   "folders": [
     {
+      "name": "curb-side.client",
       "path": "curb-side.client"
     },
     {
+      "name": "curb-side.server",
       "path": "curb-side.server"
     }
   ],
@@ -35,6 +36,23 @@
     "eslint.codeActionsOnSave.mode": "all",
     "editor.codeActionsOnSave": {
       "source.fixAll": true
-    }
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#ff8c8c",
+      "activityBar.activeBorder": "#dfffdf",
+      "activityBar.background": "#ff8c8c",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#dfffdf",
+      "activityBarBadge.foreground": "#15202b",
+      "statusBar.background": "#ff5959",
+      "statusBar.foreground": "#15202b",
+      "statusBarItem.hoverBackground": "#ff2626",
+      "titleBar.activeBackground": "#ff5959",
+      "titleBar.activeForeground": "#15202b",
+      "titleBar.inactiveBackground": "#ff595999",
+      "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#ff5959"
   }
 }

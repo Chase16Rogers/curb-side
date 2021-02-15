@@ -1,27 +1,23 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
-import { businessService } from './BusinessService'
+import socketService from "./SocketService"
 
 class OrderService {
-  async getAll(req) {
-    let bTruth = false
-    if (req.body.businessId) {
-      const business = await businessService.getOne(req.body.businessId)
-      if (business.creatorId === req.userInfo.id) {
-        bTruth = true
-      }
+  async getMyOrders(query) {
+    const res = await dbContext.Orders.find(query).populate('contents.product creator')
+    if (!res) {
+      throw new BadRequest('ERROR 403 THE ID DOES NOT HAVE ANY ORDERS')
     }
-    if (bTruth || req.body.creatorId === req.userInfo.id) {
-      const res = await dbContext.Orders.find(req.body)
-      if (!res) {
-        throw new BadRequest('Invalid Search')
-      }
-      return res
-    }
+    return res
+  }
+
+  async getOrders(userId) {
+    const res = await dbContext.Orders.find({ businessId: userId }).populate('contents.product creator')
+    return res
   }
 
   async getOne(id) {
-    const res = await dbContext.Orders.findById(id)
+    const res = await dbContext.Orders.findById(id).populate('contents.product creator')
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
@@ -29,27 +25,39 @@ class OrderService {
   }
 
   async create(data) {
+
     const res = await dbContext.Orders.create(data)
     if (!res) {
       throw new BadRequest('Not Enough Data')
     }
-    return res
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product creator')
+    socketService.messageRoom('general', 'create:order', val)
+    return val
+
   }
 
   async edit(data, query) {
+
     const res = await dbContext.Orders.findOneAndUpdate(query, data, { new: true })
     if (!res) {
       throw new BadRequest('Invalid Id')
     }
-    return res
+    let val = await dbContext.Orders.findById(res.id).populate('contents.product creator')
+  switch(data.status){
+    case "cancelledByCustomer":
+    socketService.messageRoom('general', 'update:ordercbc', val)
+    break
+    case "cancelledByBusiness":
+      socketService.messageRoom('general', 'update:ordercbb', val)
+      break
+    case "completed":
+      socketService.messageRoom('general', 'update:orderc', val)
   }
-
-  async delete(query) {
-    const res = await dbContext.Orders.findOneAndDelete(query)
-    if (!res) {
-      throw new BadRequest('Invalid Id')
-    }
-    return 'Deleted'
+  if(data.here){
+    socketService.messageRoom('general', 'update:orderh', val)
+  }
+    return val
   }
 }
 export const orderService = new OrderService()
+

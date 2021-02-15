@@ -1,14 +1,18 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { businessService } from '../services/BusinessService'
+import { orderService } from '../services/OrderService'
+import { productService } from '../services/ProductService'
 
 export class BusinessController extends BaseController {
   constructor() {
     super('api/businesses')
     this.router
-      .get('', this.getAll)
+      .get('/find/:address', this.getAll)
       .get('/:id', this.getOne)
+      .get('/:id/products', this.getProducts)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:id/orders', this.getOrders)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -16,7 +20,17 @@ export class BusinessController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await businessService.getAll()
+      const data = await businessService.getAllNear({address: req.params.address })
+      res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getProducts(req, res, next) {
+    try {
+      const query = { businessId: req.params.id }
+      const data = await productService.getAll(query)
       res.send(data)
     } catch (error) {
       next(error)
@@ -26,6 +40,16 @@ export class BusinessController extends BaseController {
   async getOne(req, res, next) {
     try {
       const data = await businessService.getOne(req.params.id)
+      res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getOrders(req, res, next) {
+    try {
+      const businessId = req.params.id
+      const data = await orderService.getOrders(businessId)
       res.send(data)
     } catch (error) {
       next(error)
