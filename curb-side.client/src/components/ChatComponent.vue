@@ -33,16 +33,17 @@ import { AppState } from '../AppState'
 import { socketService } from '../services/SocketService'
 import { chatService } from '../services/ChatService'
 import $ from 'jquery'
+import { logger } from '../utils/Logger'
 export default {
   name: 'ChatComponent',
   watch: {
     'state.chat'(newChat, oldChat) {
-      console.log('#id-' + newChat._id)
+      // console.log('#id-' + newChat._id)
       const height = $('#id-' + newChat._id)[0].scrollHeight
-      console.log(height)
+      // console.log(height)
       $('#id-' + newChat._id).animate({ scrollTop: height }, 500, 'swing')
 
-      console.log($('#id-' + newChat._id).is(':visible'))
+      // console.log($('#id-' + newChat._id).is(':visible'))
       const o = AppState.orders.find(o => o.id === newChat.orderId)
       if (o) { o.unreads = !$('#id-' + newChat._id).is(':visible') }
     }
@@ -68,7 +69,7 @@ export default {
 
           state.message = ''
         } catch (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
 

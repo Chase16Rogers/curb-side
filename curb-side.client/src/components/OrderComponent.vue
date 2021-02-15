@@ -146,12 +146,12 @@ export default {
       state,
       formatModal() {
         const order = AppState.orders.find(o => o._id === props.orderProp._id)
-        console.log(order)
+        // console.log(order)
         order.unreads = false
         setTimeout(() => {
-          console.log('#id-' + props.orderProp.chat._id)
+          // console.log('#id-' + props.orderProp.chat._id)
           const height = $('#id-' + props.orderProp.chat._id)[0].scrollHeight
-          console.log(height)
+          // console.log(height)
           $('#id-' + props.orderProp.chat._id).animate({ scrollTop: height }, 200, 'swing')
         }, 300)
       },

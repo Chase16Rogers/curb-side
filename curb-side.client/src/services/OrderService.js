@@ -8,7 +8,7 @@ class OrderService {
     for await (const order of orders) {
       const resChat = await api.get('api/orders/' + order._id + '/chats')
       order.chat = resChat.data[0]
-      console.log(order)
+      // console.log(order)
     }
 
     AppState.orders = resOrders.data

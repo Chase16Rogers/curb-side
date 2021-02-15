@@ -47,7 +47,7 @@ class BusinessService {
     let coords = [lats.data.results[0].geometry.location.lng, lats.data.results[0].geometry.location.lat]
     data.location = {}
     data.location.coordinates = coords
-    console.log(lats.data)
+    // console.log(lats.data)
     const res = await dbContext.Businesses.create(data)
     if (!res) {
       throw new BadRequest('Not Enough Data')

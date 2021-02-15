@@ -18,30 +18,30 @@ class SocketService extends SocketHandler {
   }
 
   createOrder(payload) {
-    console.log('order created with', payload)
+    // console.log('order created with', payload)
     AppState.orders.push(payload)
   }
 
   updateBusinessOrder(payload) {
-    console.log('order changed', payload)
+    // console.log('order changed', payload)
     const index = AppState.orders.findIndex(o => o._id === payload._id)
     AppState.orders.splice(index, 1, payload)
   }
 
   updateCustomerOrder(payload) {
-    console.log('order changed', payload)
+    // console.log('order changed', payload)
     const index = AppState.orders.findIndex(o => o._id === payload._id)
     AppState.orders.splice(index, 1, payload)
   }
 
   updateChat(payload) {
-    console.log('chat message', payload)
+    // console.log('chat message', payload)
 
     if (AppState.orders.length > 0) {
       const o = AppState.orders.find(o => o.id === payload.orderId)
       o.chat = payload
       o.unreads = true
-      console.log(o)
+      // console.log(o)
     } else {
       AppState.activeOrder.chat = payload
     }

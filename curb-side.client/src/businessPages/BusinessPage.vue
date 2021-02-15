@@ -114,12 +114,15 @@ export default {
   width: 80%;
 }
   .trust-us{
-    background-image: url('https://cdn.pixabay.com/photo/2013/08/28/11/47/leaf-176722__340.jpg');
+    background-image: url('http://www.clker.com/cliparts/A/3/x/H/9/K/green-swirl-hi.png');
     width: 50vw;
     right: 0;
     bottom: 72px;
     top: 118.892px;
-    position: fixed
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   }

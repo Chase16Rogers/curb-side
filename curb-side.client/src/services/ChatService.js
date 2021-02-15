@@ -10,7 +10,7 @@ class ChatService {
   async createMessage(chatId, data, message) {
     const changes = { message: message, senderId: AppState.account._id }
     // const message = { content: [...AppState.chat.content, changes] }
-    console.log(chatId, data.content, message)
+    // console.log(chatId, data.content, message)
     const res = await api.put('api/chats/' + chatId, { content: [...data.content, changes] })
     // REVIEW if user loads business orders and then loads their own order as a customer, this will break!
     if (AppState.orders.length > 0) {

@@ -5,14 +5,14 @@ class CartService {
     const str = localStorage.getItem('cart')
     let cart = {}
     if (str) {
-      console.log('if')
+      // console.log('if')
       cart = JSON.parse(str)
       if (cart.businessId !== p.businessId) {
         window.alert('You can only have one business in your cart at a time! Clear your cart to proceed.')
         return false
       }
     } else {
-      console.log('else')
+      // console.log('else')
       cart = {
         businessId: p.businessId,
         contents: []

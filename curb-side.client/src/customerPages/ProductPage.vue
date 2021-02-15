@@ -61,7 +61,7 @@ export default {
     const router = useRouter()
     onMounted(async() => {
       await productsService.getProductById(route.params.id)
-      console.log(state)
+      // console.log(state)
       await businessService.getOneBusiness(state.product.businessId)
     })
     return {
