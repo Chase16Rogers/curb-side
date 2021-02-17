@@ -9,58 +9,57 @@
 ## We used the figma platform to design our UI, lucidchart to plan out our data relationships, and Google Docs to keep track of our routes.
 
 ## Api Routes
-
-##Api Navigation
-##Businesses
-###Get
-####/api/businesses
-####Gets all businesses
-####No auth
-####/api/businesses/:id
-####Gets one business that has id from params
-####No auth
-####Post
-####/api/businesses
-####Required
-####Name
- Location
-Optional
-Tags [“ ”, “ ”]
-Logo “String” defaults to cat does not exist
-auth
-Put
-/api/businesses/:id
-Edits business that has id from params
-Auth
-Delete
-api/businesses/:id
-Deletes business that has id from params
-Auth
-Product
-Get
-/api/businesses/:id/products
-No auth
-Gets all products that belong to a business
-/api/products/:id
-No auth
-Gets product that has Id from params
-Post
-/api/products
-Auth
-Required
-Name
-Description
-Price
-businessId
-Optional
-Img: “string” - defaults cat does not exist
-Put
-/api/products/:id
-Auth
-Edits product by param id
-Delete
-/api/products/:id
-auth
+## Api Navigation
+## Businesses
+### Get
+#### /api/businesses
+#### Gets all businesses
+#### No auth
+#### /api/businesses/:id
+#### Gets one business that has id from params
+#### No auth
+### Post
+#### /api/businesses
+#### Required
+#### Name
+#### Location
+#### Optional
+#### Tags [“ ”, “ ”]
+#### Logo “String” defaults to cat does not exist
+#### auth
+### Put
+#### /api/businesses/:id
+#### Edits business that has id from params
+#### Auth
+#### Delete
+#### api/businesses/:id
+#### Deletes business that has id from params
+#### Auth
+#### Product
+#### Get
+#### /api/businesses/:id/products
+#### No auth
+#### Gets all products that belong to a business
+#### /api/products/:id
+#### No auth
+#### Gets product that has Id from params
+#### Post
+#### /api/products
+#### Auth
+#### Required
+#### Name
+#### Description
+#### Price
+#### businessId
+#### Optional
+#### Img: “string” - defaults cat does not exist
+#### Put
+#### /api/products/:id
+#### Auth
+#### Edits product by param id
+#### Delete
+#### /api/products/:id
+#### auth
 
 Orders
 Get
