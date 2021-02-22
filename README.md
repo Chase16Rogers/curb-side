@@ -22,8 +22,8 @@
 * MVC
 * RESTful API conventions
 
-### Developers
-#### **Chase Rogers** - [LinkedIn](https://www.linkedin.com/in/chase16rogers/)
+### Development Team
+#### Chase Rogers - [LinkedIn](https://www.linkedin.com/in/chase16rogers/)
 #### Parker Burkett - [LinkedIn](https://www.linkedin.com/in/parker-burkett/)
 #### Shiwani Rana - [LinkedIn](https://www.linkedin.com/in/shiwani-rana/)
 #### Ryan Davis- [LinkedIn](https://www.linkedin.com/in/ryan-davis021/)
