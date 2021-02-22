@@ -2,10 +2,14 @@
 @import "bootstrap";
 @import "./_transitions.scss";
 @import "./_overrides.scss";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300&family=Roboto:wght@500&display=swap');
+
 
 :root {
   --grey: #f6f6f6;
 }
+
+
 
 #app {
   display: flex;
@@ -175,4 +179,21 @@ background-color: rgba(255, 255, 255, 0);
 .hover-scale:hover{
   transform: scale(1.07);
   transition: transform 300ms;
+}
+p {
+  font-family: 'Open Sans', sans-serif !important;
+}
+input {
+
+  font-family: 'Open Sans', sans-serif !important;
+}
+button {
+  font-family: 'Open Sans', sans-serif !important;
+}
+a {
+  font-family: 'Open Sans', sans-serif !important;
+}
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Open Sans', sans-serif !important;
+  
 }

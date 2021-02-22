@@ -11,7 +11,9 @@
     <div class="hex-home mx-5 pt-2">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="hexagon align-items-center row rotate">
-          <h1 class="big-c col text-center">C</h1>
+          <h1 class="big-c col text-center">
+            C
+          </h1>
         </div>
       </router-link>
     </div>
@@ -35,7 +37,7 @@
         </router-link>
       </div>
 
-      <span class="navbar-text d-flex align-item-center">
+      <span class="navbar-text d-flex align-item-center hover-topleft">
         <div class="container-fluid">
           <div class="row">
             <div class="col d-flex justify-content-start align-items-center">
@@ -48,16 +50,13 @@
               </button>
               <router-link v-else :to="{ name: 'Account' }">
                 <i
-                  class="fa hover-topleft fa-user-circle d-flex fa-2x align-self-center"
+                  class="fa fa-user-circle d-flex fa-2x align-self-center"
                   aria-hidden="true"
                 ></i>
-              </router-link>
-            </div>
+              </router-link></div>
             <div class="col-md ml-0 col-sm-0 d-flex align-items-center">
               <router-link :to="{ name: 'Account' }">
-                <span class="account-name ml-0 mx-3"
-                  ><p class="hover-topleft email-text">{{ user.name }}</p></span
-                >
+                <span class="account-name ml-0 mx-3"><p class=" email-text">{{ user.name }}</p></span>
               </router-link>
             </div>
           </div>
