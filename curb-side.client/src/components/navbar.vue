@@ -33,7 +33,8 @@
           class="mx-3 cart-link f-16 hover-topleft"
           :to="{ name: 'Cart' }"
         >
-          Your Cart!!
+
+          Your Cart
         </router-link>
       </div>
 

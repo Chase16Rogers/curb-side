@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid p-3">
     <form class="form-inline" @submit.prevent="createBusiness">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-12">
           <div class="container-fluid">
-            <div class="row">
+            <div class="row bg-white elevation-3">
               <div class="col-12 d-flex justify-content-center">
                 <h3 class="">
-                  Tell us a bit about your business!
+                  Register a Business with Curb-Syde
                 </h3>
               </div>
 
@@ -31,39 +31,52 @@
                   v-model="state.newBusiness.tags"
                 />
               </div>
+              <div class="col-12 pl-4 d-flex text-muted">
+                <p class="mx-5 mb-1">
+                  separate tags by spaces
+                </p>
+              </div>
 
-              <div class="col-12 d-flex justify-content-center">
-                <img class="uploaded-img" style="" :src="state.image" alt="">
+              <div class="col-12 d-flex justify-content-center m5-2">
                 <input
-                  class="form-control border-0 mb-2"
+                  class="img-btn w-80"
                   type="file"
                   @change="handleImage"
                   accept="image/*"
                 />
               </div>
 
+              <div class="col-12 pl-4 d-flex text-muted border-0">
+                <div class="row ">
+                  <img class="uploaded-img ml-5 elevation-4" v-if="state.image" style="" :src="state.image" alt="">
+                  <p class="mx-5 d-flex align-items-center">
+                    square logo reccomended
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 pl-4 mb-3 d-flex text-muted justify-content-end">
+              </div>
               <div class="col-12 d-flex justify-content-center">
                 <input
                   class="form-control border-0 mb-2"
                   type="text"
                   name="address"
-                  placeholder="What's your business's address"
+                  placeholder="Business Address"
                   required
                   v-model="state.newBusiness.address"
                 />
               </div>
 
-              <!-- <div class="row align-self-center my-5"> -->
-              <div class="col-12 d-flex justify-content-center">
+              <div class="col-12 my-3 d-flex justify-content-center">
                 <button class="btn btn-primary">
                   Submit
                 </button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 d-sm-none d-md-block ">
-          <div class="trust-us"></div>
+          <!-- <div class="col-md-6 d-sm-none d-md-block ">
+            <div class="trust-us"></div>
+          </div> -->
         </div>
       </div>
     </form>
@@ -113,7 +126,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '../assets/scss/_variables.scss';
 .zoom {
 
   transition: transform .8s; /* Animation */
@@ -145,5 +159,11 @@ export default {
     height: 100px;
     width: 100px;
   }
+  .img-btn {
+    background-color: white !important;
 
+  }
+  .w-80 {
+    width: 80% !important;
+  }
 </style>

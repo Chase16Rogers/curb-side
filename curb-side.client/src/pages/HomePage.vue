@@ -40,7 +40,12 @@
         </div>
       </div>
     </div>
-    <div class="row h-50 bottom-row align-items-end justify-content-center">
+    <div class="row h-50 bottom-row align-items-end justify-content-end">
+      <router-link :to="{name: 'About'}">
+        <button class="btn m-4 btn-outline-primary">
+          About
+        </button>
+      </router-link>
     </div>
   </div>
 </template>

@@ -28,7 +28,7 @@ main {
 }
 
 input.border-0{
-  background-color: rgba(231, 230, 229, 0);
+  background-color: white;
   border-bottom: 1px solid black !important;
   border-radius: 0;
 }
@@ -196,4 +196,7 @@ a {
 :is(h1, h2, h3, h4, h5, h6) {
   font-family: 'Open Sans', sans-serif !important;
   
+}
+.wrap-on {
+  flex-basis: 100%;
 }
