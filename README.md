@@ -23,7 +23,7 @@
 * RESTful API conventions
 
 ### Development Team
-#### Chase Rogers - [LinkedIn](https://www.linkedin.com/in/chase16rogers/)
-#### Parker Burkett - [LinkedIn](https://www.linkedin.com/in/parker-burkett/)
-#### Shiwani Rana - [LinkedIn](https://www.linkedin.com/in/shiwani-rana/)
-#### Ryan Davis- [LinkedIn](https://www.linkedin.com/in/ryan-davis021/)
+#### Chase Rogers - [LinkedIn](https://www.linkedin.com/in/chase16rogers/) - [GitHub](https://github.com/Chase16Rogers)
+#### Parker Burkett - [LinkedIn](https://www.linkedin.com/in/parker-burkett/) - [GitHub](https://github.com/pburkett)
+#### Shiwani Rana - [LinkedIn](https://www.linkedin.com/in/shiwani-rana/) - [GitHub](https://github.com/Shiwanirana)
+#### Ryan Davis- [LinkedIn](https://www.linkedin.com/in/ryan-davis021/) - [GitHub](https://github.com/RyanDavis-bcw)
