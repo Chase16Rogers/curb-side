@@ -25,9 +25,9 @@
         <h4>Help</h4>
       </div>
     </div>
-    <div class="row pointer mb-3 px-3" @click="createBusiness()">
+    <div class="row pointer mb-3 px-3" @click="createBusinessPage()">
       <div class="col dark-lines">
-        <h4>I want to register a business</h4>
+        <h4>Register NEw Business</h4>
       </div>
     </div>
     <div class="row mb-3 px-3 pointer" @click="myBusiness()">
@@ -57,8 +57,8 @@ export default {
       myBusiness() {
         router.push({ name: 'MyBusinesses' })
       },
-      createBusiness() {
-        router.push({ name: 'CreateBusiness' })
+      createBusinessPage() {
+        router.push({ name: 'CreateBusinessPage' })
       },
       myOrders() {
         router.push({ name: 'MyOrdersPage', params: { id: AppState.account._id } })
