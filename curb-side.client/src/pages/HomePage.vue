@@ -10,7 +10,7 @@
         class="col-8 title-div align-items-center justify-content-center d-none"
       >
         <h1 class="title-text text-muted">
-          Curb-Side
+          CurbSyde
         </h1>
       </div>
     </div>
@@ -23,8 +23,8 @@
           <div class=" col-xs-10 col-md-6">
             <input
               v-model="state.search"
-              class="elevation-4 hover-topleft"
-              placeholder="Enter Address"
+              class="elevation-4 px-2 py-1 hover-topleft"
+              placeholder="Enter Current Address..."
               type="text"
             />
           </div>
@@ -40,13 +40,7 @@
         </div>
       </div>
     </div>
-
     <div class="row h-50 bottom-row align-items-end justify-content-center">
-      <div class="col-xs-4 mb-3 col-md-3 offset-xs-3 offset-md-9">
-        <button class="btn btn-outline-dark elevation-3 register-btn hover-topleft" @click="createBusiness()">
-          Register your business with us!
-        </button>
-      </div>
     </div>
   </div>
 </template>

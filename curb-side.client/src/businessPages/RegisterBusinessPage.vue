@@ -33,12 +33,12 @@
               </div>
 
               <div class="col-12 d-flex justify-content-center">
+                <img class="uploaded-img" style="" :src="state.image" alt="">
                 <input
                   class="form-control border-0 mb-2"
-                  type="text"
-                  name="img"
-                  placeholder="Image-url for your business logo"
-                  v-model="state.newBusiness.logo"
+                  type="file"
+                  @change="handleImage"
+                  accept="image/*"
                 />
               </div>
 
@@ -76,17 +76,31 @@ import { logger } from '../utils/Logger'
 import { businessService } from '../services/BusinessService'
 import { useRouter } from 'vue-router'
 export default {
-  name: 'CreateBusiness',
+  name: 'RegisterBusinessPage',
   setup() {
     const router = useRouter()
     const state = reactive({
-      newBusiness: {}
+      newBusiness: {},
+      image: ''
 
     })
     return {
       state,
-      async createBusiness() {
+      handleImage(e) {
+        console.log(e.target.files[0])
+        const selectedImage = e.target.files[0]
+        this.createBase64Image(selectedImage)
+      },
+      createBase64Image(fileObject) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          state.image = e.target.result
+        }
+        reader.readAsDataURL(fileObject)
+      },
+      async createBusiness(event) {
         try {
+          state.newBusiness.logo = state.image
           await businessService.createBusiness(state.newBusiness)
           router.push({ name: 'MyBusinesses' })
         } catch (error) {
@@ -95,6 +109,7 @@ export default {
       }
     }
   }
+
 }
 </script>
 
@@ -125,6 +140,10 @@ export default {
     background-size: cover;
   }
 
+  }
+  .uploaded-img {
+    height: 100px;
+    width: 100px;
   }
 
 </style>

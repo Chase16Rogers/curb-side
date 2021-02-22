@@ -1,3 +1,3 @@
-export const domain = 'dev-c3yjh80u.us.auth0.com'
-export const clientId = 'azCTZic2RkMdKE52wkb1yn6S97dldjQz'
-export const audience = 'https://curb-side'
+export const domain = 'dev-jxvfv4ks.us.auth0.com'
+export const clientId = 'FbOP174DOlHDMVw73FMZirbP0duTk4tt'
+export const audience = 'https://curb-side.com'

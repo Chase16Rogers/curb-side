@@ -11,7 +11,7 @@ export default class Startup {
     // NOTE Configure and Register Middleware
     const whitelist = ['http://localhost:8080']
     const corsOptions = {
-      origin: function(origin, callback) {
+      origin: function (origin, callback) {
         const originIsWhitelisted = whitelist.indexOf(origin) !== -1
         callback(null, originIsWhitelisted)
       },
