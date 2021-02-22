@@ -9,5 +9,5 @@
 #### We used the figma platform to design our UI, lucidchart to plan out our data relationships, and Google Docs to keep track of our routes.
 
 #### This challenge was a fun way for us to grow as software developers, and show off where we are in our education.
+[Figma Wire-frame](https://www.figma.com/file/Rfcj1Ozan2HCAIyt3Vvwfz/The-good-Figma?node-id=0%3A1)
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FRfcj1Ozan2HCAIyt3Vvwfz%2FThe-good-Figma%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
