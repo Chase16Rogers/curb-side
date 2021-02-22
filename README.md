@@ -12,14 +12,16 @@
 
 ### Server-side
 * Express.js
-* Google Maps API
-* [Schema documentation](https://docs.google.com/document/d/16iiaLuH-n2RI2PWrnXmTHFqTotc_XHG_xWcyqwozlcM/edit?usp=sharing)
-* [API documentation](https://docs.google.com/document/d/1xjRnCQQ266jboJWWnUtdsLCaC-SjhOTgawNv92Ri5Dw/edit?usp=sharing)
+* MongoDB
+* Google Maps API and Mongo Geolocation
+* Auth0
+* [Schema Documentation](https://docs.google.com/document/d/16iiaLuH-n2RI2PWrnXmTHFqTotc_XHG_xWcyqwozlcM/edit?usp=sharing)
+* [API Documentation](https://docs.google.com/document/d/1xjRnCQQ266jboJWWnUtdsLCaC-SjhOTgawNv92Ri5Dw/edit?usp=sharing)
 
-### Design Pattern
+### Design Patterns
 * MVC
+* RESTful conventions
 
-### Documentation and 
 
 #### We created our front-end using Vue, Bootstrap, SCSS, and the font-awesome library, our back-end was developed using Node.js, Express, and MongoDb, among a number of other technologies that we use, for example, as middleware. We wrote our server being mindful of Restful conventions, which made writing the client that much easier. We used Auth0 on both the client and server to create a secure login. We were able to incorporate, at least in a small way, the Google Maps Api, Mongoose geolocation, sockets for a more dynamic application, and we even used local storage to increase the persistance of our shopping cart.
 
