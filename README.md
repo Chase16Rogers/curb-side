@@ -1,6 +1,6 @@
-# Curb-Syde
+## **Curb-Syde**
 
-#### This application addresses small businesses who need to facilitate communications for customers ordering items to pick up curbside. Conducting curbside pickup over the phone is ineffective and costly, as each arriving customer calls in just to let a business know they've arrived. Curb-Syde seeks to facilitate the entire customer interaction, from placing an order to physically picking up the order. 
+#### This application addresses small businesses who need to facilitate communications for customers ordering items to pick up curbside. Curb-Syde seeks to  Conducting curbside pickup over the phone is ineffective and costly, as each arriving customer calls in just to let a business know they've arrived. Curb-Syde seeks to facilitate the entire customer interaction, from placing an order to physically picking up the order. 
 
 ## Technologies used
 ### Client-side
