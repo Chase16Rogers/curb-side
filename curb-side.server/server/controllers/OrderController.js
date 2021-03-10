@@ -51,8 +51,8 @@ export class OrderController extends BaseController {
     try {
       //REVIEW Edit should be more limited in scope
       const val = req.body
-      val.creatorId = req.userInfo.id
-      const query = { _id: req.params.id, creatorId: req.userInfo.id }
+      // NOTE  this code was bad! We need to do a much better check to make sure that either the business OR customer match the IDs on the order. I removed the check to get the app working for now!
+      const query = { _id: req.params.id }
       const data = await orderService.edit(val, query)
       res.send(data)
     } catch (error) {

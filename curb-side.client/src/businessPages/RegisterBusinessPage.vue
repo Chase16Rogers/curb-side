@@ -10,7 +10,6 @@
                   Tell us a bit about your business!
                 </h3>
               </div>
-
               <div class="col-12 d-flex justify-content-center">
                 <input
                   class="form-control border-0 mb-2"

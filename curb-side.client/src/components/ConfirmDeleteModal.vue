@@ -47,7 +47,7 @@ export default {
           // AppState.spin = true
           await productsService.deleteProduct(props.deleteProp)
           // eslint-disable-next-line no-undef
-          swal('Product Deleted', 'Your Product is gone now!!', 'error')
+          swal('Product Deleted', 'Product deleted.', 'error')
           // AppState.spin = false
         } catch (error) {
           logger.error(error)

@@ -92,7 +92,7 @@ export default {
           await productsService.editProduct(props.editProductProp, state.product)
           state.product = {}
           // eslint-disable-next-line no-undef
-          swal('Edited Product', 'Congratulations on successfully editing your product!! ', 'success')
+          swal('Edited Product', 'Product edited.', 'success')
         } catch (error) {
           logger.error(error)
         }
