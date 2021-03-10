@@ -91,7 +91,7 @@ export default {
           await productsService.createProduct(state.product)
           state.product = {}
           // eslint-disable-next-line no-undef
-          swal('Product Created', 'Your product is created, Congratulations', 'success')
+          swal('Product Created', 'Product created.', 'success')
         } catch (error) {
           logger.error(error)
         }

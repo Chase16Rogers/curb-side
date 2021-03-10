@@ -50,7 +50,7 @@ export default {
           await orderService.editOrder(props.completeProp, { status: 'completed' })
           socketService.emit('leave:room', props.completeProp._id)
           // eslint-disable-next-line no-undef
-          swal('Order Completed', 'Congratulation on completing the order. Finally YOU did it!!', 'success')
+          swal('Order Completed', 'Order completed.', 'success')
           AppState.spin = false
         } catch (error) {
           logger.error(error)
