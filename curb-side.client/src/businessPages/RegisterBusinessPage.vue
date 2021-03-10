@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid p-3">
     <form class="form-inline" @submit.prevent="createBusiness">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-sm-12">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
           <div class="container-fluid">
-            <div class="row bg-white elevation-3">
+            <div class="row">
               <div class="col-12 d-flex justify-content-center">
                 <h3 class="">
-                  Register a Business with Curb-Syde
+                  Tell us a bit about your business!
                 </h3>
               </div>
 
@@ -31,52 +31,39 @@
                   v-model="state.newBusiness.tags"
                 />
               </div>
-              <div class="col-12 pl-4 d-flex text-muted">
-                <p class="mx-5 mb-1">
-                  separate tags by spaces
-                </p>
-              </div>
 
-              <div class="col-12 d-flex justify-content-center m5-2">
+              <div class="col-12 d-flex justify-content-center">
                 <input
-                  class="img-btn w-80"
-                  type="file"
-                  @change="handleImage"
-                  accept="image/*"
+                  class="form-control border-0 mb-2"
+                  type="text"
+                  name="img"
+                  placeholder="Image-url for your business logo"
+                  v-model="state.newBusiness.logo"
                 />
               </div>
 
-              <div class="col-12 pl-4 d-flex text-muted border-0">
-                <div class="row ">
-                  <img class="uploaded-img ml-5 elevation-4" v-if="state.image" style="" :src="state.image" alt="">
-                  <p class="mx-5 d-flex align-items-center">
-                    square logo reccomended
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 pl-4 mb-3 d-flex text-muted justify-content-end">
-              </div>
               <div class="col-12 d-flex justify-content-center">
                 <input
                   class="form-control border-0 mb-2"
                   type="text"
                   name="address"
-                  placeholder="Business Address"
+                  placeholder="What's your business's address"
                   required
                   v-model="state.newBusiness.address"
                 />
               </div>
 
-              <div class="col-12 my-3 d-flex justify-content-center">
+              <!-- <div class="row align-self-center my-5"> -->
+              <div class="col-12 d-flex justify-content-center">
                 <button class="btn btn-primary">
                   Submit
                 </button>
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-6 d-sm-none d-md-block ">
-            <div class="trust-us"></div>
-          </div> -->
+        </div>
+        <div class="col-md-6 d-sm-none d-md-block ">
+          <div class="trust-us"></div>
         </div>
       </div>
     </form>
@@ -89,31 +76,17 @@ import { logger } from '../utils/Logger'
 import { businessService } from '../services/BusinessService'
 import { useRouter } from 'vue-router'
 export default {
-  name: 'RegisterBusinessPage',
+  name: 'CreateBusiness',
   setup() {
     const router = useRouter()
     const state = reactive({
-      newBusiness: {},
-      image: ''
+      newBusiness: {}
 
     })
     return {
       state,
-      handleImage(e) {
-        console.log(e.target.files[0])
-        const selectedImage = e.target.files[0]
-        this.createBase64Image(selectedImage)
-      },
-      createBase64Image(fileObject) {
-        const reader = new FileReader()
-        reader.onload = (e) => {
-          state.image = e.target.result
-        }
-        reader.readAsDataURL(fileObject)
-      },
-      async createBusiness(event) {
+      async createBusiness() {
         try {
-          state.newBusiness.logo = state.image
           await businessService.createBusiness(state.newBusiness)
           router.push({ name: 'MyBusinesses' })
         } catch (error) {
@@ -122,12 +95,10 @@ export default {
       }
     }
   }
-
 }
 </script>
 
-<style scoped lang="scss">
-@import '../assets/scss/_variables.scss';
+<style scoped>
 .zoom {
 
   transition: transform .8s; /* Animation */
@@ -155,15 +126,5 @@ export default {
   }
 
   }
-  .uploaded-img {
-    height: 100px;
-    width: 100px;
-  }
-  .img-btn {
-    background-color: white !important;
 
-  }
-  .w-80 {
-    width: 80% !important;
-  }
 </style>

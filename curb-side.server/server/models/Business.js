@@ -7,7 +7,7 @@ const pointSchema = new Schema({
 const Business = new Schema(
   {
     creatorId: { type: String, required: true },
-    logo: { data: Buffer, contentType: String },
+    logo: { type: String, required: true },
     name: { type: String, required: true },
     tags: { type: Array },
     address: { type: String, required: true },
