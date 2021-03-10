@@ -20,6 +20,8 @@ class SocketService extends SocketHandler {
   createOrder(payload) {
     // console.log('order created with', payload)
     AppState.orders.push(payload)
+    console.log('payload')
+    socketService.emit('join:room', payload.id)
   }
 
   updateBusinessOrder(payload) {
