@@ -7,7 +7,7 @@
     </div>
     <div class="hex-home mx-5 pt-2">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <div class="hexagon align-items-center row rotate">
+        <div class="hexagon align-items-center row">
           <h1 class="big-c col text-center">
             C
           </h1>
