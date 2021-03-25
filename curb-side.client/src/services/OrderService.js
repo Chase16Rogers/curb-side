@@ -64,7 +64,7 @@ class OrderService {
 
   async arrive(id) {
     const res = await api.put('api/orders/' + id, { here: true })
-    AppState.activeOrder = res.data
+    AppState.activeOrder.here = res.data.here
   }
 }
 export const orderService = new OrderService()
