@@ -50,7 +50,7 @@
             </div>
             <div class="row justify-content-center">
               <div class="col-8 d-flex justify-content-center">
-                <button @click="submitForm" class="btn btn-outline-secondary arrival-btn px-5 elevation-5">
+                <button @click="submitForm()" class="btn btn-outline-secondary arrival-btn px-5 elevation-5">
                   I Have Arrived!
                 </button>
               </div>
@@ -122,6 +122,7 @@ export default {
       },
       async submitForm() {
         try {
+          console.log('hey')
           await orderService.arrive(route.params.id)
         } catch (error) {
           logger.error(error)
