@@ -1,8 +1,12 @@
+---
+title: Curb-syde ReadMe
+---
+
 ## **Curb-Syde**
 
 #### This application addresses small businesses who need to facilitate communications for customers ordering items to pick up curbside. Conducting curbside pickup over the phone is ineffective and costly, as each arriving customer calls in just to let a business know they have arrived. Curb-Syde seeks to facilitate the entire customer interaction, from placing an order to physically picking up the order. 
 
-## **Technologies Used**                                                                                   
+## **Technologies Used** 
 ### Client-side
 * Vue.js
 * Socket.io
