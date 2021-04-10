@@ -1,6 +1,5 @@
----
-title: Curb-syde ReadMe
----
+Curb-syde ReadMe
+===
 
 ## **Curb-Syde**
 
